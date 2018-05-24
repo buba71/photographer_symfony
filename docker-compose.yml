@@ -1,0 +1,52 @@
+version: '2'
+
+services:
+
+    mysql:
+        container_name: container_mysql
+        image: mysql:5.7
+        volumes:
+            - ./.data/db:/var/lib/mysql
+        ports:
+            - "3306:3306"
+        environment:
+            MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+
+    php:
+        container_name: container_phpfpm
+        build:
+            context: docker/php7-fpm
+            args:
+                TIMEZONE: Europe/Madrid
+        volumes:
+            - /var/www/photographer_symfony:/var/www/symfony
+
+    nginx:
+        container_name: container_nginx
+        build:
+            context: docker/nginx
+            args:
+                MAX_EXECUTION_TIME: 60
+                SERVER_NAME: symfony.dev
+        ports:
+            - "80:80"
+        volumes_from:
+            - php
+        volumes:
+            - ./logs/nginx/:/var/log/nginx
+
+    phpmyadmin:
+        container_name: container_admin
+        image: phpmyadmin/phpmyadmin
+        ports:
+            - "8080:80"
+        environment:
+            PMA_HOST: mysql
+        links:
+            - mysql
+
+
+
+
+
+
