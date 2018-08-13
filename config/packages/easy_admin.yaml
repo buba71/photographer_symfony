@@ -1,19 +1,2 @@
-easy_admin:
-    list:
-        actions: ['show']
-    entities:
-#       # List the entity class name you want to manage
-        Gallery:
-            class: App\Entity\Gallery
-        #Image:
-        #    class: App\Entity\Image
-            form:
-                fields:
-                    - { property: 'name', type: 'text' }
-                    - { property: 'images', type: 'collection', type_options: {entry_type: 'App\Form\ImageType', by_reference: false}}
-            list:
-                fiels:
-                    - { property: 'image', type: 'image', base_path: '%app.path.gallery_images%' }
-
-#
-    site_name: "Espace d'administration"
+imports:
+    - { resource: easy_admin/ }

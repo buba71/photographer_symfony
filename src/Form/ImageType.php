@@ -19,8 +19,15 @@ class ImageType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('imageFile', VichFileType::class)
-            ->add('place', TextType::class)
+            ->add('imageFile', VichImageType::class, array(
+                'required' => false,
+                'label' => false,
+                'allow_delete' => false,
+                'download_label' => 'download_file',
+            ))
+            ->add('place', TextType::class, array(
+                'label' => 'Lieu de prise de vue'
+            ))
             ;
     }
 
@@ -30,7 +37,7 @@ class ImageType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'App\Entity\Image'
+            'data_class' => 'App\Entity\Image',
         ));
     }
 

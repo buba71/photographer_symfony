@@ -1,0 +1,24 @@
+easy_admin:
+    entities:
+        Image:
+            class: App\Entity\Image
+            label: 'Galerie photos'
+
+            disabled_actions: ['edit', 'show']
+
+
+            list:
+                title: '<strong>Vos photos</strong>'
+                fields:
+                    - { property: 'image', label: '', type: 'image', base_path: '%app.path.gallery_images%' }
+                    - { property: updatedAt, label: "Date d'ajout" }
+                    - { property: place, label: 'Lieu de prise de vue'}
+                    - { property: gallery.name, label: 'Album propriétaire' }
+
+                actions:
+                    - { name: 'delete', icon: 'trash', label: '', title: 'Supprimer' }
+
+
+            show:
+                fields:
+                    - { property: 'image', type: 'image', base_path: '%app.path.gallery_images%' }

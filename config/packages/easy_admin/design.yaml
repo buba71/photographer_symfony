@@ -1,0 +1,8 @@
+easy_admin:
+    site_name: 'Aurélie Gronfier'
+    design:
+        brand_color: 'orange'
+        color_scheme: 'dark'
+        form_theme: 'vertical'
+    formats:
+        datetime: 'd/m/Y'

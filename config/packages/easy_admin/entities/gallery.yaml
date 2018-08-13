@@ -1,0 +1,33 @@
+easy_admin:
+    entities:
+        Gallery:
+            class: App\Entity\Gallery
+            label: 'Albums'
+
+            list:
+                title: '<strong>Vos albums</strong>'
+                help: 'Gérez simplement vos albums photos.'
+
+                fields:
+                    - { property: 'name', label: 'Nom' }
+                    - { property: 'createDate', label: 'Date de création' }
+                    - { property: 'images', label: 'Nombre de photos' }
+
+                actions:
+                    - { name: 'edit', icon: 'edit', label: '', title: 'Modifier' }
+                    - { name: 'delete', icon: 'trash', label: '', title: 'Supprimer' }
+
+            form:
+                actions: ['-delete']
+
+                title: 'Modifier cet album'
+                fields:
+                    - { property: 'name', type: 'text', label: "Nom de l'album" }
+                    - { type: 'divider' }
+                    - { property: 'images', type: 'collection', type_options: { entry_type: 'App\Form\ImageType', by_reference: false, allow_delete: false }, label: 'Ajouter des photos' }
+
+            new:
+                title: 'Ajouter une Galerie'
+
+
+

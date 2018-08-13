@@ -57,7 +57,7 @@ class Image
         return $this->image;
     }
 
-    public function setImage(string $image): self
+    public function setImage(?string $image): self
     {
         $this->image = $image;
 
@@ -81,7 +81,7 @@ class Image
         return $this->imageFile;
     }
 
-    public function setImageFile(File $image = null)
+    public function setImageFile(?File $image = null)
     {
         $this->imageFile = $image;
 
@@ -90,12 +90,17 @@ class Image
         }
     }
 
+    public function getUpdatedAt()
+    {
+        return $this->updatedAt;
+    }
+
     public function getPlace()
     {
         return $this->place;
     }
 
-    public function setPlace($place)
+    public function setPlace(?string $place)
     {
         $this->place = $place;
 
@@ -104,7 +109,12 @@ class Image
 
     public function __toString()
     {
-        return $this->image;
+
+    return $this->image;
+
     }
+
+
+
 
 }

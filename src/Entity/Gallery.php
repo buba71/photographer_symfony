@@ -24,7 +24,7 @@ class Gallery
     private $name;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Image", mappedBy="gallery", cascade={"persist"})
+     * @ORM\OneToMany(targetEntity="App\Entity\Image", mappedBy="gallery", cascade={"all"}, orphanRemoval=true)
      */
     private $images;
 
@@ -91,4 +91,5 @@ class Gallery
     {
         return $this->createDate;
     }
+
 }

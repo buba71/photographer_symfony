@@ -1,0 +1,30 @@
+# entiy names, labels and titles
+0:
+Gallery: Galerie
+Galeries: Galeries
+Galerie photos: Galerie photos
+Modifier cet album: Modifier cet album
+Nom de l'album: Nom de l'album
+Ajouter des photos: Ajouter des photos
+Albums: Albums
+Image: Image
+Photos: Photos
+<strong>Vos photos</strong>: <strong>Vos photos</strong>
+<strong>Vos albums</strong>: <strong>Vos albums</strong>
+
+# entity properties
+Date d'ajout: Date d'ajout
+Album propriétaire: Album propiétaire
+Nom: Nom
+Date de création: Date de création
+Nombre de photos: Nombre de photos
+Détails: Détails
+Modifier: Modifier
+Supprimer: Supprimer
+Lieu de prise de vue: Lieu de prise de vue
+
+# actions
+action.new: Ajouter un album
+
+# messages
+Gérez simplement vos albums photos.: Gérez simplement vos albums photos.
