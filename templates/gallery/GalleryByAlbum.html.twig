@@ -1,0 +1,8 @@
+<body>
+{% for gallery in galleries %}
+
+    {%  set image = gallery.images|first %}
+    <a href=""><img src="{{ vich_uploader_asset(image,'imageFile') }}" ></a>
+
+{% endfor %}
+</body>

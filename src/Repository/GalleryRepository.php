@@ -47,4 +47,19 @@ class GalleryRepository extends ServiceEntityRepository
         ;
     }
     */
+
+    public function findAllWithImages():array
+    {
+        $qb = $this->createQueryBuilder('g');
+
+        $qb
+            ->innerJoin('g.images', 'i')
+            ->addSelect('i')
+            ->orderBy('i.updatedAt', 'DESC');
+
+        return $qb
+            ->getQuery()
+            ->getResult();
+
+    }
 }
