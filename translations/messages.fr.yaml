@@ -1,7 +1,9 @@
 # entiy names, labels and titles
 0:
+Ajouter un album: Ajouter un album
 Gallery: Galerie
 Galeries: Galeries
+Gestion des utilisateurs: Gestion des utilisateurs
 Galerie photos: Galerie photos
 Modifier cet album: Modifier cet album
 Nom de l'album: Nom de l'album
@@ -24,7 +26,7 @@ Supprimer: Supprimer
 Lieu de prise de vue: Lieu de prise de vue
 
 # actions
-action.new: Ajouter un album
+
 
 # messages
 Gérez simplement vos albums photos.: Gérez simplement vos albums photos.

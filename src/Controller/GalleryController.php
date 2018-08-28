@@ -17,22 +17,41 @@ class GalleryController
      * @return Response
      * Return the last image insered in each Album
      */
-    public function index(EntityManagerInterface $entityManager, Environment $twig): Response
+    public function index(EntityManagerInterface $em, Environment $twig): Response
     {
-        $galleries = $entityManager->getRepository(Gallery::class)->findAllWithImages();
+        $galleries = $em->getRepository(Gallery::class)->findAllWithImages();
+
 
         if(empty($galleries)){
             throw new \Exception('Il n\'y a pas encore de photo dans cet album.');
         }
 
         return new Response($twig->render('gallery/GalleryByAlbum.html.twig', array(
-            'galleries' => $galleries,
 
+            'galleries' => $galleries
         )));
     }
 
-    public function thumbnailsList($id)
+    /**
+     * @param $id
+     * @param EntityManagerInterface $em
+     * @param Environment $twig
+     * @return Response
+     * Return all thumbnails of id gallery
+     */
+    public function thumbnailsList(int $id, EntityManagerInterface $em, Environment $twig):Response
     {
+        $gallery = $em->getRepository(Gallery::class)->findByIdWithImages($id);
+        $gallery = $gallery[0];
+
+        if (empty($gallery)){
+            throw new \Exception('Un problème est survenu avec l\'affichage des thumbnails');
+        }
+
+
+        return new Response($twig->render('gallery/thumbGallery.html.twig', array(
+            'gallery' => $gallery
+        )));
 
     }
 }

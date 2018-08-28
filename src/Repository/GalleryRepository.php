@@ -62,4 +62,20 @@ class GalleryRepository extends ServiceEntityRepository
             ->getResult();
 
     }
+
+    public function findByIdWithImages($id):array
+    {
+        $qb = $this->createQueryBuilder('g');
+
+        $qb
+            ->innerJoin('g.images', 'i')
+            ->addSelect('i')
+            ->where('g.id = ?0')
+            ->orderBy('i.updatedAt', 'DESC')
+            ->setParameter(0, $id);
+
+        return $qb
+            ->getQuery()
+            ->getResult();
+    }
 }

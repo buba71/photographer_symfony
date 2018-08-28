@@ -22,3 +22,11 @@ easy_admin:
             show:
                 fields:
                     - { property: 'image', type: 'image', base_path: '%app.path.gallery_images%' }
+
+            new:
+                fields:
+                    - { property: 'imageFile', type: 'vich_image', type_options: { required: false }}
+
+            edit:
+                fields:
+                    - { property: 'imageFile', type: 'vich_image', type_options: { required: false }}

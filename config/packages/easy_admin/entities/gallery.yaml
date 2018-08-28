@@ -27,7 +27,7 @@ easy_admin:
                     - { property: 'images', type: 'collection', type_options: { entry_type: 'App\Form\ImageType', by_reference: false, allow_delete: false }, label: 'Ajouter des photos' }
 
             new:
-                title: 'Ajouter une Galerie'
+                title: 'Ajouter un album'
 
 
 

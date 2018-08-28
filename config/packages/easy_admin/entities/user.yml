@@ -1,0 +1,22 @@
+easy_admin:
+    entities:
+        User:
+            class: App\Entity\User
+            label: 'Gestion des utilisateurs'
+
+            form:
+                fields:
+                    - { property: 'username', label: "Nom d'utilisateur" }
+                    - { property: 'email', label: 'Adresse mail'}
+                    - { property: 'enabled', label: 'Compte activé'}
+                    # create new Uers with roles
+                    - { property: 'plainPassword', label: 'Mot de passe', type: 'text', type_options: { required: false } }
+                    - { property: 'roles' , label: 'Autorisations', type: 'choice', type_options: { multiple: true, choices: {'ROLE_USER':'ROLE_USER', 'ROLE_ADMIN':'ROLE_ADMIN'} } }
+
+            list:
+                fields:
+                    - { property: 'username', label: "Nomd'utilisateur" }
+                    - { property: 'email', label: 'Adresse mail'}
+                    - { property: 'enabled', label: 'Compte activé' }
+                    - { property: 'lastLogin', label: 'Dernière connexion'}
+                    - { property: 'roles', label: 'Autorisations'}

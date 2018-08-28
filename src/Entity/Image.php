@@ -5,6 +5,7 @@ namespace App\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\File;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\ImageRepository")
@@ -32,6 +33,13 @@ class Image
 
     /**
      * @Vich\UploadableField(mapping="gallery_images", fileNameProperty="image")
+     * @Assert\Expression("this.getImageFile() or this.getImage()", message="Vous devez sélectionner une photo.")     *
+     * @Assert\File(
+     *     maxSize="500k"
+     * )
+     * @Assert\Image(
+     *     mimeTypes= {"image/jpg", "image/jpeg"}
+     * )
      */
     private $imageFile;
 
@@ -42,7 +50,10 @@ class Image
     private $updatedAt;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
+     * @Assert\Length(
+     *     max= 30
+     * )
      */
     private $place;
 

@@ -2,7 +2,9 @@
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
     locale: fr
-    app.path.gallery_images: /images/
+    app.path.gallery_images: /uploads/images/
+    mailer_user: dav@gmail.com
+
 
 services:
     # default configuration for services in *this* file

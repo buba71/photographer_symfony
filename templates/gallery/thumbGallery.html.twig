@@ -1,0 +1,9 @@
+<body>
+
+{% for image in gallery.images %}
+    
+    <img src="{{ vich_uploader_asset(image, 'imageFile')|thumb }}">
+
+{% endfor %}
+
+</body>

@@ -2,7 +2,13 @@
 {% for gallery in galleries %}
 
     {%  set image = gallery.images|first %}
-    <a href=""><img src="{{ vich_uploader_asset(image,'imageFile') }}" ></a>
+    <div>
+    <h3>{{ gallery.name }}</h3>
+    <a href="{{ path('thumbnails', { 'id': gallery.id}) }}"><img src="{{ vich_uploader_asset(image,'imageFile')|thumb }}" ></a>
+    </div>
 
 {% endfor %}
+
+<a href="{{ path('fos_user_security_login') }}">Se connecter</a>
+<a href="{{ path('fos_user_registration_register') }}">Créer un compte</a>
 </body>
