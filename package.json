@@ -9,5 +9,8 @@
         "dev": "encore dev",
         "watch": "encore dev --watch",
         "build": "encore production"
+    },
+    "dependencies": {
+        "mdbootstrap": "^4.5.9"
     }
 }

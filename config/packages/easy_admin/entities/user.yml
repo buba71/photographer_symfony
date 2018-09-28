@@ -15,8 +15,8 @@ easy_admin:
 
             list:
                 fields:
-                    - { property: 'username', label: "Nomd'utilisateur" }
+                    - { property: 'username', label: "Nom d'utilisateur" }
                     - { property: 'email', label: 'Adresse mail'}
                     - { property: 'enabled', label: 'Compte activé' }
                     - { property: 'lastLogin', label: 'Dernière connexion'}
-                    - { property: 'roles', label: 'Autorisations'}
+                    - { property: 'roles', label: 'Autorisation'}

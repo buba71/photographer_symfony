@@ -4,7 +4,10 @@ namespace App\Controller;
 
 
 use App\Entity\Gallery;
+use App\Entity\Like;
+use App\Entity\LikeImage;
 use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Twig\Environment;
 
@@ -54,4 +57,50 @@ class GalleryController
         )));
 
     }
+
+    /**
+     * @param EntityManagerInterface $em
+     * @param int $userId
+     * @param int $imageId
+     * @return Response
+     * @throws \Exception
+     * Register likes/dislikes in BDD if user click
+     */
+    public function likeImage(Request $request, EntityManagerInterface $em): Response
+    {
+        // if ajax request do this...
+        if ($request->isXmlHttpRequest()){
+            $userId = $request->get('userId');
+            $imageId = $request->get('imageId');
+
+            $rq = $em->getRepository(LikeImage::class)->findItem($userId, $imageId);
+
+            // if image not liked, like, persist user and image liked into database
+            if (count($rq) == 0){
+                $like = new LikeImage();
+                $like->setUserId($userId);
+                $like->setImageId($imageId);
+
+                $em->persist($like);
+                $em->flush();
+
+                $likeClassName = 'fa fa-heart fa-lg white-text heart';
+
+            }else{
+                // dislike and remove from database
+                $em->remove($rq[0]);
+                $em->flush();
+
+                $likeClassName = 'fa fa-heart-o fa-lg white-text heart';
+            }
+
+        }else{
+            throw new \Exception('Un problème inattendu est survenu...');
+        }
+
+        return new Response($likeClassName);
+
+
+    }
+
 }

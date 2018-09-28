@@ -1,9 +1,312 @@
-<body>
+{% extends 'base.html.twig' %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="{{ asset('build/css/bootstrap.css') }}" rel="stylesheet">
+    <style>
+        /*!
+    * Start Bootstrap - Simple Sidebar (https://startbootstrap.com/template-overviews/simple-sidebar)
+    * Copyright 2013-2017 Start Bootstrap
+    * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap-simple-sidebar/blob/master/LICENSE)
+    */
 
-{% for image in gallery.images %}
-    
-    <img src="{{ vich_uploader_asset(image, 'imageFile')|thumb }}">
+        body {
+            overflow-x: hidden;
+        }
 
-{% endfor %}
+        #wrapper {
+            padding-left: 0;
+            -webkit-transition: all 0.5s ease;
+            -moz-transition: all 0.5s ease;
+            -o-transition: all 0.5s ease;
+            transition: all 0.5s ease;
+        }
 
-</body>
+        #wrapper.toggled {
+            padding-left: 0;
+        }
+
+        #sidebar-wrapper {
+            z-index: 1000;
+            position: fixed;
+            left: 250px;
+            width: 0;
+            height: 100%;
+            margin-left: -250px;
+            overflow-y: auto;
+            background: #000;
+            opacity: 0.9;
+            -webkit-transition: all 0.5s ease;
+            -moz-transition: all 0.5s ease;
+            -o-transition: all 0.5s ease;
+            transition: all 0.5s ease;
+        }
+
+        #wrapper.toggled #sidebar-wrapper {
+            width: 250px;
+        }
+
+        #page-content-wrapper {
+            width: 100%;
+            position: absolute;
+            padding: 15px;
+        }
+
+        #wrapper.toggled #page-content-wrapper {
+            position: absolute;
+            margin-right: -250px;
+        }
+
+        /* Sidebar Styles */
+
+        .sidebar-nav {
+            position: absolute;
+            top: 0;
+            width: 250px;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .sidebar-nav li {
+            text-indent: 20px;
+            line-height: 40px;
+        }
+
+        .sidebar-nav li a {
+            display: block;
+            text-decoration: none;
+            color: #999999;
+        }
+
+        .sidebar-nav li a:hover {
+            text-decoration: none;
+            color: #fff;
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .sidebar-nav li a:active, .sidebar-nav li a:focus {
+            text-decoration: none;
+        }
+
+        .sidebar-nav>.sidebar-brand {
+            height: 65px;
+            font-size: 18px;
+            line-height: 60px;
+        }
+
+        .sidebar-nav>.sidebar-brand a {
+            color: #999999;
+        }
+
+        .sidebar-nav>.sidebar-brand a:hover {
+            color: #fff;
+            background: none;
+        }
+
+        @media(min-width:768px) {
+            #wrapper {
+                padding-left: 0;
+            }
+
+            #wrapper.toggled {
+                padding-left: 0;
+            }
+
+            #sidebar-wrapper {
+                width: 0;
+            }
+
+            #wrapper.toggled #sidebar-wrapper {
+                width: 250px;
+            }
+
+            #page-content-wrapper {
+                padding: 20px;
+                position: relative;
+            }
+
+            #wrapper.toggled #page-content-wrapper {
+                position: relative;
+                margin-right: -250px;
+            }
+        }
+        .navbar.navbar-2 .navbar-toggler-icon {
+            background-image: url('https://mdbootstrap.com/img/svg/hamburger7.svg?color=000');
+
+        }
+        .navbar {
+            -webkit-box-shadow: 0 0 0 0;
+        }
+        .thumb{
+            width: 70%;
+            margin: auto;
+        }
+        .bookmark,.heart{
+            margin: 5px;
+        }
+
+    </style>
+{% endblock %}
+{% block header %}
+
+
+    <div id="wrapper">
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand">
+                    <a href="#">
+                        Aurélie Gronfier
+                    </a>
+                </li>
+                <li>
+                    <a href="#">photothèque</a>
+                </li>
+                <li>
+                    <a href="#">Mon Blog</a>
+                </li>
+                <li>
+                    <a href="#">Contact</a>
+                </li>
+            </ul>
+        </div>
+        <!-- /#sidebar-wrapper -->
+
+        <!-- Hamburger menu -->
+        <nav class="navbar navbar-light navbar-2 white">
+            <a class="navbar-brand" href="#">Aurélie Gronfier</a>            <!-- Collapse button -->
+            <button class="navbar-toggler" id="menu-toggle" type="button" data-toggle="collapse" aria-controls="navbarSupportedContent15"
+                    aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+        </nav>
+        <!-- Hamburger menu -->
+{% endblock %}
+
+{% block content %}
+
+        <div id="page-content-wrapper">
+
+            <div class="row thumb" style="background-color: #000000;margin: auto" >
+                {% set id = 0 %}
+            {% for image in gallery.images %}
+                {% set attr = 'modal' %}
+                {% set modalId = attr ~ id %}
+
+                <!-- modal -->
+
+                <div class="modal fade" id="{{ modalId }}" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+
+                            <div class="modal-header" style="background-color: #000000;justify-content: flex-start">
+
+                                    <span class="fa fa-bookmark-o fa-lg white-text bookmark" id="bookmark"></span>
+                                    <span class="fa fa-heart-o fa-lg white-text heart" id="heart{{ id }}" data-image ="{{ image.id }}" data-user ="{{ app.user.id }}"></span>
+                                <button type="button" class="close " data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true" class="white-text">&times</span>
+                                </button>
+                                </div>
+
+                            <img style="width: 100%" src="{{ vich_uploader_asset(image, 'imageFile') }}">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- modal -->
+
+                <div class="col-lg-2 col-md-3 col-sm-4 col-6" data-toggle="modal" data-target="#{{ modalId }}" style="margin: 0;padding: 0">
+                    <a><img style="margin: 0;width: 100%" src="{{ vich_uploader_asset(image, 'imageFile')|thumb }}" class="img-fluid z-depth-1"></a>
+                </div>
+                {% set id = ( id + 1) %}
+            {% endfor %}
+            </div>
+
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    <!-- /Start your project here-->
+
+    <!-- SCRIPTS -->
+    <!-- JQuery -->
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!-- Bootstrap tooltips -->
+    <!--<script type="text/javascript" src="{{ asset('build/js/popper.min.js') }}"></script>-->
+    <!-- Bootstrap core JavaScript -->
+    <!--<script type="text/javascript" src="js/bootstrap.min.js"></script>-->
+    <!-- MDB core JavaScript -->
+    <script type="text/javascript" src="{{ asset('build/js/mdb.min.js') }}"></script>
+    <script type="text/javascript"  src="{{ asset('build/js/bootstrap.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('build/js/bootstrap.min.js') }}"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            /** sideBar control */
+            $("#menu-toggle").click(function (event) {
+                event.preventDefault();
+                $("#wrapper").toggleClass("toggled");
+            });
+        });
+
+
+
+        /*               - MANAGER AJAX  FUNCTION -             */
+        function get (url, data, success, error){
+            var xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4) {
+                    if (xhr.status === 200) {
+                        success(xhr.responseText)
+                    } else {
+                        error(xhr);
+                    }
+                }
+            };
+            xhr.open('POST',url);
+            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+            xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
+
+            xhr.send(data);
+        }
+
+        /* if like/dislike image */
+
+        var $select = document.getElementsByClassName('heart');
+
+        for (i=0; i<$select.length; i++){
+            $select[i].addEventListener('click', function(event) {
+                event.preventDefault();
+
+                var $image = this.dataset.image;
+                var $user = this.dataset.user;
+                
+                /* persist user_id and image_id in Bdd and change button class */
+                get('{{ path('like_image') }}',
+                    'userId=' + $user + '&imageId=' + $image,
+                    function(response){
+                        event.target.className = response;
+
+                    },
+                    function (error){
+                        console.log(error);
+                    });
+
+            });
+
+        }
+
+
+
+
+
+
+
+
+
+
+
+    new WOW().init();
+    </script>
+{% endblock %}
+
+

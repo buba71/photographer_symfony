@@ -2,16 +2,21 @@
 
 namespace App\Controller;
 
+use App\Entity\Gallery;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Twig\Environment;
 
 
-class DefaultController extends AbstractController
+class DefaultController
 {
-    public function index()
+    public function index(EntityManagerInterface $em, Environment $twig)
     {
-        phpinfo();
+        $sliderImages = $em->getRepository(Gallery::class)->findAllWithImages();
 
-        return $this->render('base.html.twig');
+
+        return new Response($twig->render('base.html.twig', array(
+            'sliderImages' => $sliderImages
+        )));
     }
 }

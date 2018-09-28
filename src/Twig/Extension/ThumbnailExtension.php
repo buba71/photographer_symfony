@@ -35,7 +35,8 @@ class ThumbnailExtension extends AbstractExtension
 
         $thumbImage = $manager
             ->make($imagePath)
-            ->fit(200, 200)
+            ->fit(250, 250)
+            ->encode('jpg', 100)
             ->save('../public'.$thumbPath, 100)
         ;
 

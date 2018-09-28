@@ -2,6 +2,7 @@ index:
     path: /
     controller: App\Controller\DefaultController::index
 
+# *** gallery routes ***
 gallery_index:
     path: /gallery
     controller: App\Controller\GalleryController::index
@@ -10,5 +11,10 @@ thumbnails:
     path: /thumbnails/{id}
     controller: App\Controller\GalleryController::thumbnailsList
 
+like_image:
+    path: /like
+    controller: App\Controller\GalleryController::likeImage
+
+# *** security routes ****
 fos_user:
     resource: "@FOSUserBundle/Resources/config/routing/all.xml"
