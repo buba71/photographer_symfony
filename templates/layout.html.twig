@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="fr" class="">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta http-equiv="x-ua-compatible" content="ie-edge">
+        <title>{% block title %}{% endblock title%}</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300|Lora|Cinzel+Decorative:700">
+        <!-- mdb-bootstrap core CSS -->
+        <link href="{{ asset('build/css/bootstrap.css') }}" rel="stylesheet">
+    {% block stylesheets %}
+        <link rel="stylesheet" href={{ asset('build/css/gallery.css') }}>
+    {% endblock %}
+    </head>
+
+    <body>
+
+    {% block header %}
+
+    <div id="wrapper">
+    <!-- Sidebar -->
+    <div id="sidebar-wrapper">
+        <ul class="sidebar-nav align-bottom" style="margin-top: 100px">
+            <li>
+                <a href="#">PHOTOTHEQUE</a>
+            </li>
+            <li>
+                <a href="#">MON BLOG</a>
+            </li>
+            <li>
+                <a href="#">CONTACT</a>
+            </li>
+            <li>
+                <a href="#">A PROPOS</a>
+            </li>
+        </ul>
+
+    </div>
+    <!-- /#sidebar-wrapper -->
+
+    <!-- Hamburger menu -->
+    <nav class="navbar navbar-light navbar-2 elegant-color-dark">
+        <div class="brand">
+            <a class="" href="#"><img src="{{ asset('build/images/brand.png') }}" alt="" style="max-width: 200px"></a>
+        </div>
+
+        <div class="navbar-links">
+            <div class=" d-inline-block" id="user-login">
+                {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+
+                    <div class=" dropdown" >
+                        <a class="nav-link dropdown-toggle white-text" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
+                           aria-expanded="false"><span class="fa fa-user fa-lg white-text"></span>
+                        </a>
+                        <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item" href="{{ path('user_account') }}">Mon compte</a>
+                            <a class="dropdown-item" href="{{ path('fos_user_security_logout') }}">Se déconnecter</a>
+                        </div>
+                    </div>
+
+                {% else %}
+
+                    <div class="dropdown">
+                        <a class="nav-link dropdown-toggle white-text" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
+                           aria-expanded="false"> <span class="fa fa-user-times fa-lg white-text"></span>
+                        </a>
+                        <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item" href="{{ path('fos_user_security_login') }}">Se connecter</a>
+                            <a class="dropdown-item" href="{{ path('fos_user_registration_register') }}">Créer un compte</a>
+                        </div>
+                    </div>
+
+                {% endif %}
+            </div>
+            <!-- Hamburger button -->
+            <button class="navbar-toggler d-inline" id="menu-toggle" type="button" data-toggle="" aria-controls="navbarSupportedContent15"
+                    aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span>
+            </button>
+            <!-- Hamburger button -->
+        </div>
+    </nav>
+    <!-- Navigation -->
+    {% endblock header %}
+
+    {% block content %}
+    {% endblock content %}
+    </div>
+
+    {% block footer %}
+
+    <!-- Footer -->
+    <footer id="footer" class="elegant-color-dark white-text">
+        <!-- links nav -->
+        <ul class="text-center">
+            <li>
+                <a href="#" class="nav-link">Photothèque</a>
+            </li>
+            <li class="vertical-line">|</li>
+            <li>
+                <a href="#" class="nav-link">Blog</a>
+            </li>
+            <li class="vertical-line">|</li>
+            <li>
+                <a href="#" class="nav-link">Contact</a>
+            </li>
+            <li class="vertical-line">|</li>
+            <li>
+                <a href="#" class="nav-link">A Propos</a>
+            </li>
+        </ul>
+        <!-- copyright, terms, privacy -->
+        <div id="copyright" class="flex-center">
+            <a href="#"><span>Politique de confidentialité | </span></a>
+            <a href="#"><span> Mentions légales</span></a><br/>
+            <span><span style="color: gainsboro">&copy 2018 Copyright:</span> Aurélie Gronfier</span>
+        </div>
+    </footer>
+    <!-- Footer -->
+
+    {% endblock footer %}
+
+    {% block javascripts %}
+    <!-- /Start your project here-->
+
+    <!-- SCRIPTS -->
+    <!-- JQuery -->
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <!-- Bootstrap core JavaScript -->
+    <!--<script type="text/javascript" src="js/bootstrap.min.js"></script>-->
+    <!-- MDB core JavaScript -->
+    <script type="text/javascript"  src="{{ asset('build/js/mdbootstrap.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('build/js/bootstrap.min.js') }}"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            /** sideBar control */
+            $("#menu-toggle").click(function (event) {
+                event.preventDefault();
+                $("#wrapper").toggleClass("toggled");
+            });
+        });
+
+
+
+        /*               - MANAGER AJAX  FUNCTION -             */
+        function get (url, data, success, error){
+            var xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4) {
+                    if (xhr.status === 200) {
+                        success(xhr.responseText)
+                    } else {
+                        error(xhr);
+                    }
+                }
+            };
+            xhr.open('POST',url);
+            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+            xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
+
+            xhr.send(data);
+        }
+
+        /* if like/dislike image */
+
+        var $select = document.getElementsByClassName('heart');
+
+        for (i=0; i<$select.length; i++){
+            $select[i].addEventListener('click', function(event) {
+                event.preventDefault();
+
+                // retrieve current user_id and liked image_id
+                var $image = this.dataset.image;
+                var $user = this.dataset.user;
+
+                // Send data to galleryController with post method in AJAX (get() function)
+                get('{{ path('like_image') }}',
+                    'userId=' + $user + '&imageId=' + $image,
+                    function(response){
+
+                        // Set className of heart button
+                        event.target.className = response;
+                    },
+                    function (error){
+                        console.log(error);
+                    });
+
+            });
+
+        }
+
+        new WOW().init();
+
+    </script>
+{% endblock %}
+    </body>
+</html>

@@ -57,6 +57,11 @@ class Image
      */
     private $place;
 
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $numberOfLike;
+
 
     public function getId()
     {
@@ -123,6 +128,18 @@ class Image
 
     return $this->image;
 
+    }
+
+    public function getNumberOfLike(): ?int
+    {
+        return $this->numberOfLike;
+    }
+
+    public function setNumberOfLike(?int $numberOfLike): self
+    {
+        $this->numberOfLike = $numberOfLike;
+
+        return $this;
     }
 
 

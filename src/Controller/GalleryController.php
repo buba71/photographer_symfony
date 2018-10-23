@@ -4,11 +4,12 @@ namespace App\Controller;
 
 
 use App\Entity\Gallery;
-use App\Entity\Like;
+
 use App\Entity\LikeImage;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Security\Core\Security;
 use Twig\Environment;
 
 
@@ -42,18 +43,26 @@ class GalleryController
      * @return Response
      * Return all thumbnails of id gallery
      */
-    public function thumbnailsList(int $id, EntityManagerInterface $em, Environment $twig):Response
+    public function thumbnailsList(int $id, EntityManagerInterface $em, Environment $twig, Security $security ):Response
     {
+        $imagesLiked = array();
+
+        if ($security->getUser()){
+            $user = $security->getUser()->getId();
+            $imagesLiked = $em->getRepository(LikeImage::class)->findBy(array('user_id'=> $user));
+        }
+
         $gallery = $em->getRepository(Gallery::class)->findByIdWithImages($id);
         $gallery = $gallery[0];
+
 
         if (empty($gallery)){
             throw new \Exception('Un problème est survenu avec l\'affichage des thumbnails');
         }
 
-
         return new Response($twig->render('gallery/thumbGallery.html.twig', array(
-            'gallery' => $gallery
+            'gallery'     => $gallery,
+            'imagesLiked' => $imagesLiked
         )));
 
     }
@@ -68,7 +77,7 @@ class GalleryController
      */
     public function likeImage(Request $request, EntityManagerInterface $em): Response
     {
-        // if ajax request do this...
+        // if ajax request, do this...
         if ($request->isXmlHttpRequest()){
             $userId = $request->get('userId');
             $imageId = $request->get('imageId');
@@ -99,7 +108,6 @@ class GalleryController
         }
 
         return new Response($likeClassName);
-
 
     }
 

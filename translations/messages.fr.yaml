@@ -31,3 +31,6 @@ Lieu de prise de vue: Lieu de prise de vue
 
 # messages
 Gérez simplement vos albums photos.: Gérez simplement vos albums photos.
+
+#Pluriel du nombre de photos contenue dans chaque galerie
+nbImages: "[0,1] %count% photo|[2,Inf] %count% photos"

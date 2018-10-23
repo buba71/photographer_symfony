@@ -15,6 +15,10 @@ like_image:
     path: /like
     controller: App\Controller\GalleryController::likeImage
 
+user_account:
+    path: /account
+    controller: App\Controller\UserController::index
+
 # *** security routes ****
 fos_user:
     resource: "@FOSUserBundle/Resources/config/routing/all.xml"

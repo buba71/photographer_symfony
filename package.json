@@ -1,6 +1,7 @@
 {
     "devDependencies": {
-        "@symfony/webpack-encore": "^0.19.0"
+        "@symfony/webpack-encore": "^0.20.0",
+        "webpack-notifier": "^1.7.0"
     },
     "license": "UNLICENSED",
     "private": true,
@@ -11,6 +12,6 @@
         "build": "encore production"
     },
     "dependencies": {
-        "mdbootstrap": "^4.5.9"
+        "mdbootstrap": "^4.5.12"
     }
 }

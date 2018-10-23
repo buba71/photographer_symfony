@@ -1,0 +1,388 @@
+/*!
+* Start Bootstrap - Simple Sidebar (https://startbootstrap.com/template-overviews/simple-sidebar)
+* Copyright 2013-2017 Start Bootstrap
+* Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap-simple-sidebar/blob/master/LICENSE)
+*/
+
+body {
+    overflow-x: hidden;
+    background-color: #2e2e2e;
+    color: #FFFFFF;
+}
+
+#wrapper {
+    padding-left: 0;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+#wrapper.toggled {
+    padding-left: 0;
+}
+
+#sidebar-wrapper {
+    z-index: 1000;
+    position: fixed;
+    left: 250px;
+    width: 0;
+    height: 100%;
+    margin-left: -250px;
+    overflow-y: auto;
+    background: #212121;
+    opacity: 0.7;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+#wrapper.toggled #sidebar-wrapper {
+    width: 250px;
+}
+
+#page-content-wrapper {
+    width: 100%;
+    padding: 15px;
+    margin-top: 100px;
+}
+
+#wrapper.toggled #page-content-wrapper {
+    position: absolute;
+    margin-right: -250px;
+}
+
+/* Sidebar Styles */
+
+.sidebar-nav {
+    position: absolute;
+    top: 0;
+    width: 250px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    font-family: "Open Sans Condensed", sans-serif;
+}
+
+.sidebar-nav li {
+    text-indent: 20px;
+    line-height: 40px;
+}
+
+.sidebar-nav li a {
+    display: block;
+    text-decoration: none;
+    color: #999999;
+}
+
+.sidebar-nav li a:hover {
+    text-decoration: none;
+    color: #fff;
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.sidebar-nav li a:active, .sidebar-nav li a:focus {
+    text-decoration: none;
+}
+
+.sidebar-nav{
+    height: 65px;
+    font-size: 18px;
+    line-height: 60px;
+}
+
+.sidebar-nav>.sidebar-brand a {
+    color: #999999;
+}
+
+.sidebar-nav>.sidebar-brand a:hover {
+    color: #fff;
+    background: none;
+}
+
+@media(min-width:768px) {
+    #wrapper {
+        padding-left: 0;
+    }
+
+    #wrapper.toggled {
+        padding-left: 0;
+    }
+
+    #sidebar-wrapper {
+        width: 0;
+    }
+
+    #wrapper.toggled #sidebar-wrapper {
+        width: 250px;
+    }
+
+    #page-content-wrapper {
+        position: relative;
+        margin-top: 100px;
+        margin-bottom: 100px;
+        padding: 0;
+    }
+
+    #wrapper.toggled #page-content-wrapper {
+        position: relative;
+        margin-right: -250px;
+    }
+}
+.gallery{
+    width: 60%;
+    margin: auto;
+}
+
+.gallery {
+    font-size: x-small;
+    -webkit-column-count: 3;
+    -moz-column-count: 3;
+    column-count: 3;
+    -webkit-column-width: auto;
+    -moz-column-width: auto;
+    column-width:auto;
+}
+#gallery-item{
+    border-radius:10px 10px 10px 10px;
+    break-inside: avoid;
+}
+#image-info{
+    padding: 20px;
+    background-color: rgba(0,0,0,0.5);
+    font-family: "Open Sans Condensed", sans-serif;
+}
+
+@media  (max-width: 768px){
+    .gallery{
+        font-size: xx-small;
+        -webkit-column-count: 2;
+        -moz-column-count: 2;
+        column-count: 2;
+        -webkit-column-width: auto;
+        -moz-column-width: auto;
+        column-width: auto;
+
+    }
+
+}
+@media (max-width: 450px) {
+    .gallery {
+        font-size: xx-small;
+        -webkit-column-count: 1;
+        -moz-column-count: 1;
+        column-count: 1;
+        -webkit-column-width: auto;
+        -moz-column-width: auto;
+        column-width: auto;
+    }
+}
+/* ThumGallery CSS */
+.thumb-gallery{
+    width: 70%;
+    margin: auto;
+}
+
+#gallery-name{
+    font-family: "Open Sans", sans-serif;
+    color: #9d9d9d;
+}
+
+.modal-userInfo {
+    background: transparent;
+    color: #9d9d9d;
+    border: 2px solid #9d9d9d;
+    border-radius: 20px;
+}
+.modal-userInfo:hover{
+    color: #000000;
+    border: 2px solid #000000;
+}
+#myheader{
+    border-bottom: 1px solid black;
+    box-shadow: 0 1px 5px black;
+}
+
+#modal-bodyInfo{
+    margin: 20px;
+    font-size: small;
+}
+.modal-header{
+    margin: -1px;
+}
+
+.heart{
+    margin: 5px;
+    cursor: pointer;
+}
+
+#close-modal{
+    background: transparent;
+    color: #9d9d9d;
+    border: 2px solid #9d9d9d;
+    border-radius: 20px;
+    float: right;
+    margin: 0;
+}
+
+#close-modal:hover{
+    color: #FFFFFF;
+    border: 2px solid #FFFFFF;
+}
+
+/* left to right overlay */
+
+.item:hover .item-overlay.right{
+    right: 0;
+    left:0;
+}
+
+/* by default, overlay is visible... */
+.item-overlay{
+    position:absolute;
+    top:0; right:0; bottom: 0; left: 0;
+    text-align: center;
+    line-height: 8em;
+    background: rgba(0,0,0,0.5);
+    color: #FFFFFF;
+    overflow: hidden;
+
+
+
+
+    /* fix text transition issue for .left and .right but need to overwrite left and right properties in .right */
+    width: 100%;
+
+    -moz-transition: top 0.3s, right 0.3s, bottom 0.3s, left 0.3s ;
+    -webkit-transition: top 0.3s, right 0.3s, bottom 0.3s, left 0.3s;
+    transition: top 0.3s, right 0.3s, bottom 0.3s, left 0.3s;
+}
+
+/*
+..But this hide it
+*/
+.item-overlay.right{
+    right: 200%;
+    left: -100%;
+}
+
+*{
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.item{
+    position: relative;
+    float:left;
+    margin: 2%;
+    overflow: hidden;
+    width:21%;
+    max-width: 540px;
+}
+
+.item img{
+    max-width: 100%;
+}
+
+#like-info{
+    display: inline-block;
+    vertical-align: middle;
+}
+
+/* Navbar CSS */
+
+.navbar {
+    -webkit-box-shadow: 0 1px 20px black;
+}
+.navbar.navbar-2 .navbar-toggler-icon {
+    background-image: url('https://mdbootstrap.com/img/svg/hamburger7.svg?color=fff');
+}
+.brand img{
+    max-width: 200px;
+}
+
+#navbarDropdownMenuLink{
+    margin-right: 20px;
+    padding: 0;
+}
+
+@media (max-width: 450px) {
+    #navbarDropdownMenuLink{
+        margin-right: 200px;
+    }
+
+}
+
+/* User Account web page */
+#page-content{
+    font-family: 'Open Sans Condensed', sans-serif;
+    width: 70%;
+    margin: auto;
+    margin-top: 100px;
+    margin-bottom: 100px;
+}
+
+#bookmarks-info img{
+    border: 2px solid white;
+}
+
+#user-info a{
+    color: #FFFFFF;
+}
+#user-info button{
+    background: transparent;
+    color: #9d9d9d;
+    border: 2px solid #9d9d9d;
+    border-radius: 20px;
+    margin: 0;
+}
+#user-info button:hover{
+    color: #FFFFFF;
+    border: 2px solid #FFFFFF;
+}
+/*footer CSS */
+#footer{
+    margin-top: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 20px;
+    width: 100%;
+    font-family: "Open Sans Condensed", sans-serif;
+}
+#footer li{
+    display: inline-block;
+}
+
+.vertical-line{
+    margin-left:10px;
+    margin-right: 10px;
+}
+#footer li a{
+    text-transform: uppercase;
+    color: #FFFFFF;
+}
+#footer li a:hover{
+    text-decoration: underline;
+}
+#copyright{
+    font-size: x-small;
+}
+#copyright a{
+    color: gainsboro;
+}
+#copyright a:hover{
+    text-decoration: underline
+}
+#copyright span{
+    margin-left: 1pt;
+}
+
+
+
+
+
+

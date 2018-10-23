@@ -48,7 +48,8 @@ class LikeImageRepository extends ServiceEntityRepository
     }
     */
 
-    public function findItem(int $user, int $image)
+    /* Search if  image is liked by user */
+    public function findItem(int $user, int $image): array
     {
         $qb = $this->createQueryBuilder('l');
 
@@ -63,6 +64,6 @@ class LikeImageRepository extends ServiceEntityRepository
             ->getQuery()
             ->getResult();
 
-
     }
+
 }

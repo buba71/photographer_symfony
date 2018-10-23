@@ -1,0 +1,136 @@
+{% extends 'layout.html.twig' %}
+{% block stylesheets %}
+    <style type="text/css">
+        .user-form{
+            position: relative;
+            top: 20px;
+            margin: auto;
+            max-width: 300px;
+        }
+        ._submit{
+            background: transparent;
+            color: #9d9d9d;
+            border: 2px solid #9d9d9d;
+            border-radius: 30px;
+            margin-top: 30px;
+        }
+        ._submit:hover{
+            color: #FFFFFF;
+            border: 2px solid #FFFFFF;
+        }
+
+
+    </style>
+{% endblock %}
+
+
+{% block header %}
+{% endblock %}
+
+{% block content %}
+{% trans_default_domain 'FOSUserBundle' %}
+    <!-- error message -->
+
+    <!-- form login -->
+    <div class="card user-form">
+
+
+        <h5 class="card-header elegant-color-dark white-text text-center py-4">
+            <strong>Connection</strong>
+        </h5>
+
+        <!-- Card Content -->
+        <div class="card-body px-lg-5 pt-0 elegant-color-dark">
+
+
+
+            <!--form -->
+
+            <form class="text-center" style="color:#757575" action="{{ path("fos_user_security_check") }}" method="post">
+                {% if csrf_token %}
+                    <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+                {% endif %}
+
+                <!-- UserName -->
+                <div class="md-form">
+                    <label for="username">{{ 'security.login.username'|trans }}</label>
+                    <input type="text" class="form-control" id="username" name="_username" value="{{ last_username }}" required="required" autocomplete="username" />
+                </div>
+
+                <!-- Password -->
+                <div class="md-form">
+                    <label for="password">{{ 'security.login.password'|trans }}</label>
+                    <input type="password" class="form-control"id="password" name="_password" required="required" autocomplete="current-password" />
+                </div>
+
+                <div>
+                    <div>
+                        <!--Remenber me -->
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id="remember_me" name="_remember_me" value="on" />
+                            <label class="custom-control-label" for="remember_me">{{ 'security.login.remember_me'|trans }}</label>
+                        </div>
+                    </div>
+                    <div>
+                        <!-- Forgot password -->
+                        <a href="#">Mot de passe oublié</a>
+
+                    </div>
+                </div>
+
+                <!-- Sign button -->
+                <div>
+                    <button class="btn btn-outline btn-rounded waves-effect _submit" type="submit">{{ 'security.login.submit'|trans }}</button>
+                </div>
+
+            </form>
+
+            {% if error %}
+                <div class="alert alert-danger" role="alert">
+                    {{ error.messageKey|trans(error.messageData, 'security') }}
+                </div>
+            {% endif %}
+
+        </div>
+
+
+    </div>
+
+{% endblock %}
+
+{% block footer %}
+{% endblock footer %}
+
+
+{% block javascripts %}
+    <!-- /Start your project here-->
+
+    <!-- SCRIPTS -->
+    <!-- JQuery -->
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!-- Bootstrap tooltips -->
+    <script type="text/javascript" src="{{ asset('build/js/popper.min.js') }}"></script>
+    <!-- Bootstrap core JavaScript -->
+    <!--<script type="text/javascript" src="js/bootstrap.min.js"></script>-->
+    <!-- MDB core JavaScript -->
+    <script type="text/javascript" src="{{ asset('build/js/mdb.min.js') }}"></script>
+    <script type="text/javascript"  src="{{ asset('build/js/bootstrap.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('build/js/bootstrap.min.js') }}"></script>
+    <script type="text/javascript">
+        $("#menu-toggle").click(function(e) {
+            e.preventDefault();
+            $("#wrapper").toggleClass("toggled");
+        });
+    </script>
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+

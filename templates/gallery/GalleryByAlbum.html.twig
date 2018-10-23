@@ -1,268 +1,35 @@
-{% extends 'base.html.twig' %}
-{% block stylesheets %}
-    <link href="{{ asset('build/css/bootstrap.css') }}" rel="stylesheet">
-    <style>
-        /*!
- * Start Bootstrap - Simple Sidebar (https://startbootstrap.com/template-overviews/simple-sidebar)
- * Copyright 2013-2017 Start Bootstrap
- * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap-simple-sidebar/blob/master/LICENSE)
- */
+{% extends 'layout.html.twig' %}
 
-        body {
-            overflow-x: hidden;
-        }
+{% block title %}Gallerie{% endblock %}
 
-        #wrapper {
-            padding-left: 0;
-            -webkit-transition: all 0.5s ease;
-            -moz-transition: all 0.5s ease;
-            -o-transition: all 0.5s ease;
-            transition: all 0.5s ease;
-        }
+{% block content %}
+<!-- main content-wrapper-->
 
-        #wrapper.toggled {
-            padding-left: 0;
-        }
+    <div id="page-content-wrapper" class="">
+            <!-- Galleries list -->
+            <div class="gallery" id="gallery">
 
-        #sidebar-wrapper {
-            z-index: 1000;
-            position: fixed;
-            left: 250px;
-            width: 0;
-            height: 100%;
-            margin-left: -250px;
-            overflow-y: auto;
-            background: #000;
-            opacity: 0.9;
-            -webkit-transition: all 0.5s ease;
-            -moz-transition: all 0.5s ease;
-            -o-transition: all 0.5s ease;
-            transition: all 0.5s ease;
-        }
+                {% for gallery in galleries %}
+                    {%  set image = gallery.images|first %}
+                    {% set nbImages = gallery.images|length %}
 
-        #wrapper.toggled #sidebar-wrapper {
-            width: 250px;
-        }
-
-        #page-content-wrapper {
-            width: 100%;
-            position: absolute;
-            padding: 15px;
-        }
-
-        #wrapper.toggled #page-content-wrapper {
-            position: absolute;
-            margin-right: -250px;
-        }
-
-        /* Sidebar Styles */
-
-        .sidebar-nav {
-            position: absolute;
-            top: 0;
-            width: 250px;
-            margin: 0;
-            padding: 0;
-            list-style: none;
-        }
-
-        .sidebar-nav li {
-            text-indent: 20px;
-            line-height: 40px;
-        }
-
-        .sidebar-nav li a {
-            display: block;
-            text-decoration: none;
-            color: #999999;
-        }
-
-        .sidebar-nav li a:hover {
-            text-decoration: none;
-            color: #fff;
-            background: rgba(255, 255, 255, 0.2);
-        }
-
-        .sidebar-nav li a:active, .sidebar-nav li a:focus {
-            text-decoration: none;
-        }
-
-        .sidebar-nav>.sidebar-brand {
-            height: 65px;
-            font-size: 18px;
-            line-height: 60px;
-        }
-
-        .sidebar-nav>.sidebar-brand a {
-            color: #999999;
-        }
-
-        .sidebar-nav>.sidebar-brand a:hover {
-            color: #fff;
-            background: none;
-        }
-
-        @media(min-width:768px) {
-            #wrapper {
-                padding-left: 0;
-            }
-
-            #wrapper.toggled {
-                padding-left: 0;
-            }
-
-            #sidebar-wrapper {
-                width: 0;
-            }
-
-            #wrapper.toggled #sidebar-wrapper {
-                width: 250px;
-            }
-
-            #page-content-wrapper {
-                padding: 20px;
-                position: relative;
-            }
-
-            #wrapper.toggled #page-content-wrapper {
-                position: relative;
-                margin-right: -250px;
-            }
-        }
-
-
-        .gallery{
-            width: 70%;
-            margin: auto;
-        }
-
-
-        .gallery {
-            -webkit-column-count: 3;
-            -moz-column-count: 3;
-            column-count: 3;
-            -webkit-column-width: 33%;
-            -moz-column-width: 33%;
-            column-width: 33%; }
-
-        .pics
-        {
-            border-radius:10px 10px 10px 10px;
-        }
-        .gallery .pics {
-            -webkit-transition: all 350ms ease;
-            transition: all 350ms ease; }
-        .gallery .animation {
-            -webkit-transform: scale(1);
-            -ms-transform: scale(1);
-            transform: scale(1); }
-
-        @media (max-width: 450px) {
-            .gallery {
-                -webkit-column-count: 1;
-                -moz-column-count: 1;
-                column-count: 1;
-                -webkit-column-width: 100%;
-                -moz-column-width: 100%;
-                column-width: 100%;
-            }
-        }
-
-        .navbar.navbar-2 .navbar-toggler-icon {
-            background-image: url('https://mdbootstrap.com/img/svg/hamburger7.svg?color=000');
-
-        }
-        .navbar {
-            -webkit-box-shadow: 0 0 0 0;
-        }
-
-
-
-
-
-    </style>
-{% endblock %}
-{% block header %}
-
-    <div id="wrapper">
-        <!-- Sidebar -->
-        <div id="sidebar-wrapper">
-            <ul class="sidebar-nav">
-                <li class="sidebar-brand">
-                    <a href="#">
-                        Aurélie Gronfier
-                    </a>
-                </li>
-                <li>
-                    <a href="#">photothèque</a>
-                </li>
-                <li>
-                    <a href="#">Mon Blog</a>
-                </li>
-                <li>
-                    <a href="#">Contact</a>
-                </li>
-            </ul>
-        </div>
-        <!-- /#sidebar-wrapper -->
-
-        <!-- Hamburger menu -->
-        <nav class="navbar navbar-light navbar-2 white">
-            <a class="navbar-brand" href="#"></a>            <!-- Collapse button -->
-            <button class="navbar-toggler" id="menu-toggle" type="button" data-toggle="collapse" aria-controls="navbarSupportedContent15"
-                    aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-        </nav>
-        <!-- Hamburger menu -->
-
-{% endblock %}
-        {% block content %}
-
-        <!-- User authentication -->
-            <a href="{{ path('fos_user_security_login') }}" class="float-right">Se connecter</a><br/>
-            <a href="{{ path('fos_user_registration_register') }}" class="float-right">Créer un compte</a><br/>
-        <!-- User authentication -->
-
-        <!-- main content-wrapper-->
-            <div id="page-content-wrapper">
-
-                    <!-- Galleries list -->
-                    <div class="gallery" id="gallery">
-                        <h1 style="color: #9d9d9d"><em>Photothèque</em></h1>
-                        {% for gallery in galleries %}
-                            {%  set image = gallery.images|first %}
-                            <div class=" view overlay zoom mb-3 pics animation">
-                                <a href="{{ path('thumbnails', { 'id': gallery.id}) }}">
-                                <img src="{{ vich_uploader_asset(image,'imageFile') }}" class="img-fluid ">
-                                    <div class="mask flex-center rgba-brown-strong">{{ gallery.name }}</div>
-                                </a>
+                    <div class=" view overlay zoom mb-3 pics animation" id="gallery-item">
+                        <a href="{{ path('thumbnails', { 'id': gallery.id}) }}">
+                        <img src="{{ vich_uploader_asset(image,'imageFile') }}" class="img-fluid ">
+                            <div class="mask fl waves-effect waves-light white-text text-center" id="image-info">
+                                <h4 class="">{{ gallery.name }}</h4>
+                                <p class="">
+                                Créée le : {{ gallery.createDate|date('d/m/Y') }}<br/>
+                                Contient : {{ 'nbImages'|transchoice(nbImages) }}
+                                </p>
                             </div>
-                        {% endfor %}
+                        </a>
                     </div>
-                    <!-- Galleries list -->
+                {% endfor %}
+            </div>            <!-- Galleries list -->
 
-            </div>
-        <!-- Main content-wrapper -->
+    </div>
+    <!-- Main content-wrapper -->
 
-        </div>
-{% endblock %}
-{% block javascripts %}
-    <!-- /Start your project here-->
+{% endblock content %}
 
-    <!-- SCRIPTS -->
-    <!-- JQuery -->
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <!-- Bootstrap tooltips -->
-    <!--<script type="text/javascript" src="{{ asset('build/js/popper.min.js') }}"></script>-->
-    <!-- Bootstrap core JavaScript -->
-    <!--<script type="text/javascript" src="js/bootstrap.min.js"></script>-->
-    <!-- MDB core JavaScript -->
-    <script type="text/javascript" src="{{ asset('build/js/mdb.min.js') }}"></script>
-    <script type="text/javascript"  src="{{ asset('build/js/bootstrap.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('build/js/bootstrap.min.js') }}"></script>
-    <script type="text/javascript">
-        $("#menu-toggle").click(function(e) {
-            e.preventDefault();
-            $("#wrapper").toggleClass("toggled");
-        });
-    </script>
-{% endblock %}

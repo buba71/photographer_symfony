@@ -14,6 +14,15 @@ RUN printf '[PHP]\ndate.timezone = "%s"\n', ${TIMEZONE} > /usr/local/etc/php/con
 # Install PDO extensions
 RUN docker-php-ext-install pdo pdo_mysql zip
 
+# Install GD extension
+RUN apt-get update && apt-get install -y \
+        libfreetype6-dev \
+        libjpeg62-turbo-dev \
+    && docker-php-ext-configure gd \
+        --with-freetype-dir=/usr/include/ \
+        --with-jpeg-dir=/usr/include/ \
+    && docker-php-ext-install -j$(nproc) gd
+
 # Install xdebug
 RUN pecl install xdebug
 RUN docker-php-ext-enable xdebug
@@ -27,6 +36,7 @@ RUN echo "xdebug.remote_host=127.0.0.1" >> /usr/local/etc/php/conf.d/docker-php-
 RUN echo "xdebug.idekey=\"PHPSTORM\"" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
 RUN echo "xdebug.remote_port=9001" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
 RUN echo "xdebug.profiler_enable_trigger=off" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
+RUN echo "xdebug.max_nesting_level = 256" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
 
 # Create an alias for Symfony3 console
 RUN echo 'alias symfony="php bin/console"' >> ~/.bashrc
