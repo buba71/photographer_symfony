@@ -1,0 +1,112 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}Hello World!{% endblock %}
+
+
+
+{% block content %}
+<style>
+    .example-wrapper{
+        margin-top: 100px;
+    }
+    .card{
+        width: 70%;
+        margin: auto;
+    }
+    ._submit{
+        background: transparent;
+        color: #9d9d9d;
+        border: 2px solid #9d9d9d;
+        border-radius: 30px;
+        margin-top: 10px;
+    }
+    ._submit:hover{
+        color: #FFFFFF;
+        border: 2px solid #FFFFFF;
+    }
+    #contact-info, .card-title{
+        font-family: 'Open Sans Condensed', sans-serif;
+    }
+
+</style>
+
+<div class="example-wrapper">
+
+    <div class="card elegant-color-dark">
+
+        <div class="card-body">
+            <div class="card-title">
+                <h4>Contact</h4>
+            </div>
+
+            <div class="row ">
+                <div class="col-md-8">
+                    {{ form_start(form) }}
+                    <div class="form-row">
+                        <div class="col-md-6">
+                            <div class="md-form form-group">
+                                {{ form_widget(form.name, { 'attr':{'class': 'form-control' }}) }}
+                                {{ form_label(form.name, 'Nom') }}
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="md-form form-group">
+                                {{ form_label(form.firstName, 'Prénom') }}
+                                {{ form_widget(form.firstName, { 'attr': {'class': 'form-control' } }) }}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="col-md-12">
+                            <div class="md-form form-group">
+                                {{ form_label(form.email, 'Adresse mail') }}
+                                {{ form_widget(form.email, { 'attr': { 'class': 'form-control' } }) }}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="md-form form-group">
+                                {{ form_label(form.message, 'Votre message') }}
+                                {{ form_widget(form.message, { 'attr': { 'class': 'form-control' } }) }}
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="md-form text-center">
+                        <button type="submit" class="btn btn-outline _submit">Envoyer</button>
+                    </div>
+                    {{ form_end(form) }}
+                </div>
+                <div class="col-md-4 flex-center" id="contact-info">
+                    <ul class="list-unstyled">
+                        <li>
+                            <span class="fa fa-map-marker fa-1x"></span>
+                            <p>71300 Montceau-Les-Mines, France</p>
+                        </li>
+                        <li>
+                            <span class="fa fa-phone fa-1x"></span>
+                            <p>+33 06 64 56 34</p>
+                        </li>
+                        <li>
+                            <span class="fa fa-envelope fa-1x"></span>
+                            <p>aurelie.gronfier@gmail.com</p>
+                        </li>
+                        <li>
+                            <span class="fa fa-facebook-official"></span>
+
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</div>
+{% endblock %}
+
+

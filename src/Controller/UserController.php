@@ -17,7 +17,7 @@ class UserController
     {
         // User must be authenticated
         if($security->isGranted('ROLE_USER')){
-            $imagesList = array();
+            $itemList = array();
 
             $user = $security->getUser()->getId();
 

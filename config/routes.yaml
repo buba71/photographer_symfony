@@ -19,6 +19,10 @@ user_account:
     path: /account
     controller: App\Controller\UserController::index
 
+contact:
+    path: /contact
+    controller: App\Controller\ContactController::index
+
 # *** security routes ****
 fos_user:
     resource: "@FOSUserBundle/Resources/config/routing/all.xml"
