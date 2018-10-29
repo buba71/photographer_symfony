@@ -21,6 +21,9 @@ services:
         volumes:
             - /var/www/photographer_symfony:/var/www/symfony
 
+        links:
+            - maildev:maildev
+
     nginx:
         container_name: container_nginx
         build:
@@ -44,6 +47,12 @@ services:
             PMA_HOST: mysql
         links:
             - mysql
+
+    maildev:
+        container_name: container_maildev
+        image: djfarrelly/maildev
+        ports:
+            - "1080:80"
 
 
 

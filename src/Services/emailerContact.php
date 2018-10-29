@@ -2,28 +2,46 @@
 
 namespace App\Services;
 
+use Twig\Environment;
+
 
 class emailerContact
 {
-   private $mailer;
 
+    private $mailer;
+    private $twig;
 
-   public function __construct(\Swift_Mailer $mailer)
-   {
-       $this->mailer =$mailer;
-   }
+    /**
+     * EmailerContact constructor.
+     * @param \Swift_Mailer $mailer
+     * @param Environment $twig
+     */
+    public function __construct(\Swift_Mailer $mailer, Environment $twig)
+    {
+        $this->mailer =$mailer;
+        $this->twig = $twig;
+    }
 
-   public function contactEmail(array $contactInfo)
-   {
-
-
+    /**
+     * @param array $contactInfo
+     * @ service witch send an email to admin from any user
+     */
+    public function contactEmail(array $contactInfo):void
+    {
         list('name'=>$name, 'firstName'=>$firstName, 'email'=>$mail, 'message'=>$message) = $contactInfo;
 
         $newMessage = (new \Swift_Message('Nouveau Contact'))
             ->setFrom($mail)
-            ->setTo('davdelima71@gmail.com')
-            ->setBody($message);
+            ->setTo('d.delima@outlook.fr')
+            ->setSubject('Nouveau contact')
+
+            ->setBody($this->twig->render('contact/mailing.html.twig', array(
+                'contactName'      => $name,
+                'contactFirstName' => $firstName,
+                'contactEmail'     => $mail,
+                'contactMessage'   => $message
+            )), 'text/html');
 
         $this->mailer->send($newMessage);
-   }
+    }
 }

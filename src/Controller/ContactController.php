@@ -4,8 +4,7 @@ namespace App\Controller;
 
 
 use App\Form\ContactType;
-use App\Services\EmailerContact;
-use Symfony\Component\Form\Form;
+use App\Services\emailerContact;
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
