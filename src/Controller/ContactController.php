@@ -18,7 +18,7 @@ class ContactController
      * @param Response $response
      * @return mixed
      */
-    public function index(Request $request, Environment $twig, FormFactoryInterface $formFactory, EmailerContact $mailer):Response
+    public function index(Request $request, Environment $twig, FormFactoryInterface $formFactory, emailerContact $mailer):Response
     {
         $form = $formFactory->createBuilder(ContactType::class)->getForm();
 

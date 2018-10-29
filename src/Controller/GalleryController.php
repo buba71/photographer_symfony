@@ -6,6 +6,7 @@ namespace App\Controller;
 use App\Entity\Gallery;
 
 use App\Entity\LikeImage;
+use App\Services\likeDislikeImage;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -25,9 +26,8 @@ class GalleryController
     {
         $galleries = $em->getRepository(Gallery::class)->findAllWithImages();
 
-
         if(empty($galleries)){
-            throw new \Exception('Il n\'y a pas encore de photo dans cet album.');
+            throw new \Exception('Cette gallerie ne contient pas de photos.');
         }
 
         return new Response($twig->render('gallery/GalleryByAlbum.html.twig', array(
@@ -52,12 +52,13 @@ class GalleryController
             $imagesLiked = $em->getRepository(LikeImage::class)->findBy(array('user_id'=> $user));
         }
 
+        // return an array with the images of gallery id
         $gallery = $em->getRepository(Gallery::class)->findByIdWithImages($id);
+        // Get first element of query
         $gallery = $gallery[0];
 
-
         if (empty($gallery)){
-            throw new \Exception('Un problème est survenu avec l\'affichage des thumbnails');
+            throw new \Exception('Cette gallerie ne contient pas de photos');
         }
 
         return new Response($twig->render('gallery/thumbGallery.html.twig', array(
@@ -75,39 +76,22 @@ class GalleryController
      * @throws \Exception
      * Register likes/dislikes in BDD if user click
      */
-    public function likeImage(Request $request, EntityManagerInterface $em): Response
+    public function likeImage(Request $request, likeDislikeImage $likeDislikeImage): Response
     {
         // if ajax request, do this...
         if ($request->isXmlHttpRequest()){
             $userId = $request->get('userId');
             $imageId = $request->get('imageId');
 
-            $rq = $em->getRepository(LikeImage::class)->findItem($userId, $imageId);
-
-            // if image not liked, like, persist user and image liked into database
-            if (count($rq) == 0){
-                $like = new LikeImage();
-                $like->setUserId($userId);
-                $like->setImageId($imageId);
-
-                $em->persist($like);
-                $em->flush();
-
-                $likeClassName = 'fa fa-heart fa-lg white-text heart';
-
-            }else{
-                // dislike and remove from database
-                $em->remove($rq[0]);
-                $em->flush();
-
-                $likeClassName = 'fa fa-heart-o fa-lg white-text heart';
+            if (isset($userId) && isset($imageId)){
+                $likeClassName = $likeDislikeImage->likeOrDislike($userId, $imageId);
             }
+
+            return new Response($likeClassName);
 
         }else{
             throw new \Exception('Un problème inattendu est survenu...');
         }
-
-        return new Response($likeClassName);
 
     }
 
