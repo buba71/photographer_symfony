@@ -6,7 +6,7 @@
 
 {% block content %}
 <style>
-    .example-wrapper{
+    .wrapper{
         margin-top: 100px;
     }
     .card{
@@ -30,17 +30,25 @@
 
 </style>
 
-<div class="example-wrapper">
+<div class="wrapper">
 
     <div class="card elegant-color-dark">
 
         <div class="card-body">
+
             <div class="card-title">
                 <h4>Contact</h4>
             </div>
 
             <div class="row ">
                 <div class="col-md-8">
+
+                    {% for message in app.flashes('notice') %}
+                        <div class="alert alert-secondary">
+                            <em>{{ message }}</em>
+                        </div>
+                    {% endfor %}
+
                     {{ form_start(form) }}
                     <div class="form-row">
                         <div class="col-md-6">
@@ -49,13 +57,16 @@
                                 {{ form_label(form.name, 'Nom') }}
                             </div>
                         </div>
-
                         <div class="col-md-6">
                             <div class="md-form form-group">
                                 {{ form_label(form.firstName, 'Prénom') }}
                                 {{ form_widget(form.firstName, { 'attr': {'class': 'form-control' } }) }}
                             </div>
                         </div>
+                            <div class="red-text">
+                            {{ form_errors(form.name) }}
+                            {{ form_errors(form.firstName) }}
+                            </div>
                     </div>
 
                     <div class="form-row">
@@ -64,8 +75,12 @@
                                 {{ form_label(form.email, 'Adresse mail') }}
                                 {{ form_widget(form.email, { 'attr': { 'class': 'form-control' } }) }}
                             </div>
+                            <div class="red-text">
+                                {{ form_errors(form.email) }}
+                            </div>
                         </div>
                     </div>
+
                     <div class="row">
                         <div class="col-md-12">
                             <div class="md-form form-group">
@@ -73,7 +88,9 @@
                                 {{ form_widget(form.message, { 'attr': { 'class': 'form-control' } }) }}
                             </div>
                         </div>
-
+                            <div class="red-text">
+                            {{ form_errors(form.message) }}
+                            </div>
                     </div>
 
                     <div class="md-form text-center">

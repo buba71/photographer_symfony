@@ -2,6 +2,7 @@
 
 namespace App\Twig\Extension;
 
+use App\Services\interventionImageProcess;
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFilter;
 Use Intervention\Image\ImageManager;
@@ -9,6 +10,13 @@ Use Intervention\Image\ImageManager;
 
 class ThumbnailExtension extends AbstractExtension
 {
+    private $interventionImage;
+
+    public function __construct(interventionImageProcess $interventionImage)
+    {
+        $this->interventionImage = $interventionImage;
+    }
+
     public function getFilters()
     {
         return array(
@@ -24,21 +32,7 @@ class ThumbnailExtension extends AbstractExtension
         // Define image source path
         $thumbPath = '/uploads/images/thumbs//'.pathinfo($imagePath,PATHINFO_FILENAME) .'.jpg';
 
-        // If no exist, create thumbnails Directory storage
-        $thumbDir = '../public/uploads/images/thumbs';
-        if(!file_exists($thumbDir)) {
-            mkdir($thumbDir);
-        }
-
-        // Intervention Image Process image
-        $manager = new ImageManager();
-
-        $thumbImage = $manager
-            ->make($imagePath)
-            ->fit(250, 250)
-            ->encode('jpg', 100)
-            ->save('../public'.$thumbPath, 100)
-        ;
+        $this->interventionImage->processImage($imagePath, $thumbPath);
 
         return $thumbPath;
 
