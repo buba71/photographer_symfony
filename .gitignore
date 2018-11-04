@@ -30,3 +30,7 @@ yarn-error.log
 /public/build/
 /public/uploads/
 ### images uploaded ###
+
+###php unit##
+/tests/tests-coverage/
+###php unit##
