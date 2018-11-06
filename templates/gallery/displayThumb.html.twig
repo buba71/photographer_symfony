@@ -1,0 +1,8 @@
+<img style="margin: 0;width: 100%" src="{{ vich_uploader_asset(image, 'imageFile')|thumb }}" class="img-fluid z-depth-1" alt="{{ gallery.name }}">
+<a><div class="item-overlay right"><span class="fa fa-heart-o red-text" id="like-info"></span>
+        {% if image.numberOfLike is null %}
+            0
+        {% endif %}
+        {{ image.numberOfLike }}
+    </div>
+</a>

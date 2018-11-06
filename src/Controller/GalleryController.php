@@ -49,6 +49,7 @@ class GalleryController
 
         if ($security->getUser()){
             $user = $security->getUser()->getId();
+            // retrieve images liked by the current user
             $imagesLiked = $em->getRepository(LikeImage::class)->findBy(array('user_id'=> $user));
         }
 

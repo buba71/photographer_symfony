@@ -15,7 +15,7 @@
 
                     <div class=" view overlay zoom mb-3 pics animation" id="gallery-item">
                         <a href="{{ path('thumbnails', { 'id': gallery.id}) }}">
-                        <img src="{{ vich_uploader_asset(image,'imageFile') }}" class="img-fluid ">
+                        <img  src="{{ vich_uploader_asset(image,'imageFile') }}" class="img-fluid"  alt="{{ gallery.name }}">
                             <div class="mask fl waves-effect waves-light white-text text-center" id="image-info">
                                 <h4 class="">{{ gallery.name }}</h4>
                                 <p class="">

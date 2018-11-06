@@ -28,5 +28,9 @@ yarn-error.log
 ### images uploaded ###
 /assets/images/
 /public/build/
-/public/uploads/
+/public/uploads/images/
 ### images uploaded ###
+
+###php unit##
+/tests/tests-coverage/
+###php unit##

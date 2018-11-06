@@ -9,6 +9,13 @@ use Doctrine\ORM\Events;
 use Doctrine\Common\EventSubscriber;
 use Doctrine\Common\Persistence\Event\LifecycleEventArgs;
 
+
+/**
+ * Class LikeEventSubscriber
+ * @package App\EventSubscribers
+ * @ compute the number of likes from an Image and set $numberOfLikes attribute
+ */
+
 class LikeEventSubscriber implements EventSubscriber
 {
 
