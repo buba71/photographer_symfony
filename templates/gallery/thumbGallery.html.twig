@@ -1,6 +1,6 @@
 {% extends 'layout.html.twig' %}
 
-
+{% block title %}Images{% endblock %}
 {% block content %}
 
         <div id="page-content-wrapper">
@@ -52,28 +52,16 @@
 
                 <!-- Display thumbnails -->
                 <div class="col-lg-2 col-md-3 col-sm-4 col-6 item" data-toggle="modal" data-target="#modal{{ modalId }}" style="margin: 0;padding: 0">
-                    <img style="margin: 0;width: 100%" src="{{ vich_uploader_asset(image, 'imageFile')|thumb }}" class="img-fluid z-depth-1">
-                    <a><div class="item-overlay right"><span class="fa fa-heart-o red-text" id="like-info"></span>
-                            {% if image.numberOfLike is null %}
-                                0
-                            {% endif %}
-                            {{ image.numberOfLike }}
-                        </div>
-                    </a>
+                    {% include 'gallery/displayThumb.html.twig' %}
                 </div>
                 <!-- set modal id -->
                 {% set modalId = ( modalId + 1) %}
+
                 {% else %}
+
                 <!-- Display message "user must be authenticated -->
                 <div class="col-lg-2 col-md-3 col-sm-4 col-6 item" data-toggle="modal" data-target="#modal0" style="margin: 0;padding: 0">
-                    <img style="margin: 0;width: 100%" src="{{ vich_uploader_asset(image, 'imageFile')|thumb }}" class="img-fluid z-depth-1">
-                    <a><div class="item-overlay right"><span class="fa fa-heart-o red-text" id="like-info"></span>
-                            {% if image.numberOfLike is null %}
-                                0
-                            {% endif %}
-                            {{ image.numberOfLike }}
-                        </div>
-                    </a>
+                    {% include 'gallery/displayThumb.html.twig' %}
                 </div>
 
                 {% endif %}
@@ -108,6 +96,3 @@
         </div>
 
 {% endblock %}
-
-
-

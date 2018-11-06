@@ -23,13 +23,13 @@
     <div id="sidebar-wrapper">
         <ul class="sidebar-nav align-bottom" style="margin-top: 100px">
             <li>
-                <a href="#">PHOTOTHEQUE</a>
+                <a href="{{ path('gallery_index') }}">PHOTOTHEQUE</a>
             </li>
             <li>
                 <a href="#">MON BLOG</a>
             </li>
             <li>
-                <a href="#">CONTACT</a>
+                <a href="{{ path('contact') }}">CONTACT</a>
             </li>
             <li>
                 <a href="#">A PROPOS</a>
@@ -42,7 +42,7 @@
     <!-- Hamburger menu -->
     <nav class="navbar navbar-light navbar-2 elegant-color-dark">
         <div class="brand">
-            <a class="" href="#"><img src="{{ asset('build/images/brand.png') }}" alt="" style="max-width: 200px"></a>
+            <a class="" href="{{ path('index') }}"><img src="{{ asset('build/images/brand.png') }}" alt="" style="max-width: 200px"></a>
         </div>
 
         <div class="navbar-links">
@@ -94,7 +94,7 @@
         <!-- links nav -->
         <ul class="text-center">
             <li>
-                <a href="#" class="nav-link">Photothèque</a>
+                <a href="{{ path('gallery_index') }}" class="nav-link">Photothèque</a>
             </li>
             <li class="vertical-line">|</li>
             <li>
@@ -102,7 +102,7 @@
             </li>
             <li class="vertical-line">|</li>
             <li>
-                <a href="#" class="nav-link">Contact</a>
+                <a href="{{ path('contact') }}" class="nav-link">Contact</a>
             </li>
             <li class="vertical-line">|</li>
             <li>
@@ -133,8 +133,8 @@
     <script type="text/javascript" src="{{ asset('build/js/mdb.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('build/js/bootstrap.min.js') }}"></script>
     <script type="text/javascript">
+        /** sidebar control **/
         $(document).ready(function () {
-
             /** sideBar control */
             $("#menu-toggle").click(function (event) {
                 event.preventDefault();

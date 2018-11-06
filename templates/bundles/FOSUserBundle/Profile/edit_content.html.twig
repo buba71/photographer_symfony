@@ -1,39 +1,5 @@
 {% extends 'layout.html.twig' %}
-{% form_theme form _self %}
-
-{# Customize form protype#}
-{%- block form_row -%}
-    {% spaceless %}
-        <div class="md-form">
-            {{- form_label(form) -}}
-            {{- form_widget(form,{'attr': {'class': 'form-control'}}) -}}
-            {{- form_errors(form) -}}
-        </div>
-    {% endspaceless %}
-{%- endblock form_row -%}
-
-{% block stylesheets %}
-    <style type="text/css">
-        .user-form{
-            position: relative;
-            top: 20px;
-            max-width: 300px;
-            margin: auto;
-        }
-        ._submit{
-            background: transparent;
-            color: #9d9d9d;
-            border: 2px solid #9d9d9d;
-            border-radius: 30px;
-            margin-top: 10px;
-        }
-
-        ._submit:hover{
-            color: #FFFFFF;
-            border: 2px solid #FFFFFF;
-        }
-    </style>
-{% endblock stylesheets %}
+{% form_theme form 'form/mdForm.html.twig' %}
 
 
 {% block header %}
@@ -62,32 +28,7 @@
 
     </div>
 
-
-
-
 {% endblock content %}
 
 {% block footer %}
 {% endblock footer %}
-
-{% block javascripts %}
-    <!-- /Start your project here-->
-
-    <!-- SCRIPTS -->
-    <!-- JQuery -->
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <!-- Bootstrap tooltips -->
-    <script type="text/javascript" src="{{ asset('build/js/popper.min.js') }}"></script>
-    <!-- Bootstrap core JavaScript -->
-    <!--<script type="text/javascript" src="js/bootstrap.min.js"></script>-->
-    <!-- MDB core JavaScript -->
-    <script type="text/javascript" src="{{ asset('build/js/mdb.min.js') }}"></script>
-    <script type="text/javascript"  src="{{ asset('build/js/bootstrap.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('build/js/bootstrap.min.js') }}"></script>
-    <script type="text/javascript">
-        $("#menu-toggle").click(function(e) {
-            e.preventDefault();
-            $("#wrapper").toggleClass("toggled");
-        });
-    </script>
-{% endblock %}

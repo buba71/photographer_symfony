@@ -4,9 +4,9 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <meta http-equiv="x-ua-compatible" content="ie-edge">
-        <title>{% block title %}Material Design Bootstrap{% endblock title%}</title>
+        <title>Accueil</title>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-        <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Lora|Cinzel+Decorative:700">
+        <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300|Lora|Cinzel+Decorative:700">
         <!-- mdb-bootstrap core CSS -->
         <link href="{{ asset('build/css/bootstrap.css') }}" rel="stylesheet">
         <link rel="stylesheet" href="{{ asset('build/css/index.css') }}">
@@ -24,7 +24,7 @@
 
         <!--Main Navigation-->
         <nav class="navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar">
-            <a class="navbar-brand" href="#"><img src="{{ asset('build/images/brand.png') }}" alt="brand"> </a>
+            <a class="navbar-brand" href="{{ path('index') }}"><img src="{{ asset('build/images/brand.png') }}" alt="brand"> </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                     aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -32,13 +32,13 @@
             <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Photothèque</a>
+                        <a class="nav-link" href="{{ path('gallery_index') }}">Photothèque</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Blog</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Contact</a>
+                        <a class="nav-link" href="{{ path('contact') }}">Contact</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">A propos</a>
@@ -61,8 +61,10 @@
                         <div class="slide-image">
                             <span class="view slideshow-image" style="background-image: url('{{ vich_uploader_asset(image,'imageFile') }}')"></span>
                             <div>
-                                <h3>{{ image.gallery.name }} </h3>
-                                <button class="btn btn-elegant " style="margin-bottom: 20px">Accéder à la gallerie</button>
+                                <h3 style="display: inline;">{{ image.gallery.name }} </h3>
+                                <a href="{{ path('thumbnails', {'id': image.gallery.id } )}}">
+                                <button class="btn btn-elegant btn-sm" style="margin-bottom: 40px">Accéder à la gallerie</button>
+                                </a>
                             </div>
                         </div>
                     {% endfor %}
@@ -74,17 +76,10 @@
             </div>
         </main>
         <footer>
-
+        <!-- Some code -->
         </footer>
         <!-- JQuery -->
         <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-
-        <!-- Bootstrap tooltips -->
-        <!--<script type="text/javascript" src="{{ asset('build/js/popper.min.js') }}"></script>-->
-        <!-- Bootstrap core JavaScript -->
-        <!--<script type="text/javascript" src="js/bootstrap.min.js"></script>-->
-        <!-- MDB core JavaScript -->
-        <!--<script type="text/javascript" src="{{ asset('build/js/mdb.js') }}"></script>-->
         <script type="text/javascript"  src="{{ asset('build/js/bootstrap.js') }}"></script>
         <script type="text/javascript" src="{{ asset('build/js/bootstrap.min.js') }}"></script>
 
