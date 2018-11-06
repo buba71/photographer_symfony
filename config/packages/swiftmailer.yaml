@@ -4,5 +4,5 @@ swiftmailer:
     transport: smtp
     host: maildev
     port: 25
-    username: null
-    password: null
+    username: '%env(MAILER_USERNAME)%'
+    password: '%env(MAILER_PASSWORD)%'
