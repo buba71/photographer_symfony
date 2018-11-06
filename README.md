@@ -1,1 +1,1 @@
-HELLO WORLD !!
+This application use Symfony 4.2 with docker.
