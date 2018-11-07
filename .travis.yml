@@ -1,0 +1,7 @@
+langage: php
+
+sudo: false
+
+script:
+    - composer install
+    - ./bin/phpunit/
