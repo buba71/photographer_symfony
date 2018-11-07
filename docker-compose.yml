@@ -20,7 +20,6 @@ services:
                 TIMEZONE: ${TIMEZONE}
         volumes:
             - /var/www/photographer_symfony:/var/www/symfony
-
         links:
             - maildev:maildev
 
@@ -53,6 +52,8 @@ services:
         image: djfarrelly/maildev
         ports:
             - "1080:80"
+
+
 
 
 
