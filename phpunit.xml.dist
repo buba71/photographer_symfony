@@ -2,7 +2,7 @@
 
 <!-- https://phpunit.de/manual/current/en/appendixes.configuration.html -->
 <phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:noNamespaceSchemaLocation="http://schema.phpunit.de/6.1/phpunit.xsd"
+         xsi:noNamespaceSchemaLocation="http://schema.phpunit.de/6.5/phpunit.xsd"
          backupGlobals="false"
          colors="true"
          bootstrap="vendor/autoload.php"
@@ -14,23 +14,21 @@
         <env name="APP_DEBUG" value="1" />
         <env name="APP_SECRET" value="s$cretf0rt3st" />
         <env name="SHELL_VERBOSITY" value="-1" />
+        <env name="DATABASE_URL" value="mysql://root:root@192.168.99.100:3306/gallery_db_tests"/>
         <!-- define your env variables for the test env here -->
-        <env name="DATABASE_URL" value="mysql://root:root@192.168.99.100:3306/gallery_db_tests" />
     </php>
 
     <testsuites>
         <testsuite name="Project Test Suite">
-            <directory>tests/</directory>
+            <directory>tests</directory>
         </testsuite>
     </testsuites>
 
     <filter>
-        <whitelist processUncoveredFilesFromWhitelist = "true">
-            <directory>./src/</directory>
+        <whitelist processUncoveredFilesFromWhitelist="true">
+            <directory suffix=".php">src</directory>
             <exclude>
-                <directory>
-                    ./src/Migrations/
-                </directory>
+                <directory suffix=".php">src/Migrations</directory>
             </exclude>
         </whitelist>
     </filter>
