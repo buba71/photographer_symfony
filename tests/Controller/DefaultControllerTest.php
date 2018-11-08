@@ -13,6 +13,10 @@ class DefaultControllerTest extends WebTestCase
 
         $client->request('GET', '/');
 
+        $response = $client->getResponse()->getContent();
+
+        var_dump($response);
+
         $this->assertEquals(200, $client->getResponse()->getStatusCode());
     }
 }
