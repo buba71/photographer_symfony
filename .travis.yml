@@ -1,9 +1,24 @@
-langage: php
+language: php
 php:
-    - 7.1.9
+- '7.1.9'
 
 sudo: false
 
-script:
+services:
+- mysql
+
+before_install:
+    - mysql -e 'CREATE DATABASE gallery_db_tests;'
+    - composer self-update
+
+install:
+    - cp .env.dist .env
     - composer install
-    - php bin/phpunit
+    - php bin/console doctrine:database:create --env=test
+    - php bin/console doctrine:schema:create --env=test
+    - php bin/console doctrine:fixtures:load -n --env=test
+
+
+script:
+- php bin/phpunit
+
