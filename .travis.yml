@@ -1,4 +1,5 @@
 langage: php
+php:
     - 7.2
 
 sudo: false
