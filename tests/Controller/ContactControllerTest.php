@@ -25,6 +25,9 @@ class ContactControllerTest extends WebTestCase
 
         static ::assertEquals(200, $client->getResponse()->getStatusCode());
 
+        $response = $client->getResponse()->getContent();
+        dump($response);
+
 
 
 
