@@ -1,9 +1,27 @@
 language: php
 php:
+<<<<<<< HEAD
     - '7.1.9'
+=======
+- '7.1.9'
+>>>>>>> dev
 
 sudo: false
 
-script:
+services:
+- mysql
+
+before_install:
+    - composer self-update
+
+install:
+    - cp .env.dist .env
     - composer install
-    - php bin/phpunit
+    - php bin/console doctrine:database:create --env=test
+    - php bin/console doctrine:schema:create --env=test
+    - php bin/console doctrine:fixtures:load -n --env=test
+
+
+script:
+- php bin/phpunit
+
