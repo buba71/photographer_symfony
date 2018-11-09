@@ -3,7 +3,7 @@
 /public/bundles/
 /var/
 /vendor/
-/src/Migrations/
+/src/Migrations
 ###< symfony/framework-bundle ###
 ###> symfony/phpunit-bridge ###
 .phpunit
