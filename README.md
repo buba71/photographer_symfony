@@ -1,1 +1,1 @@
-This application use Symfony 4.2 with docker.
+<h3>This application run with Symfony 4.2 with docker.</h3>

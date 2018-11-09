@@ -30,7 +30,7 @@ class LikeEventSubscriber implements EventSubscriber
     public function prePersist(LifecycleEventArgs $args):void
     {
         $entity = $args->getObject();
-        $em = $args->getObjectManager();
+        $objectManager = $args->getObjectManager();
 
         if(!$entity instanceof LikeImage){
             return;
@@ -38,12 +38,12 @@ class LikeEventSubscriber implements EventSubscriber
 
         $imageId = $entity->getImageId();
 
-        $image = $em->getRepository(Image::class)->findOneBy(array('id' => $imageId));
+        $image = $objectManager->getRepository(Image::class)->findOneBy(array('id' => $imageId));
         $numberOfLike = $image->getNumberOfLike();
 
         $addLike = $numberOfLike + 1;
         $image->setNumberOfLike($addLike);
-        $em->flush();
+        $objectManager->flush();
     }
 
     public function preRemove(LifecycleEventArgs $args):void
