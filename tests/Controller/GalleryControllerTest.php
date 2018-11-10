@@ -24,9 +24,9 @@ class GalleryControllerTest extends WebTestCase
 
     public function testLikeImage():void
     {
-        $this->client->xmlHttpRequest('POST' ,'/like',array('userId' => 1, 'imageId' => 16));
+        $this->client->xmlHttpRequest('POST' ,'/like');
 
-        $this->assertEquals(200, $this->client->getResponse()->getStatusCode());
+        $this->assertEquals(500, $this->client->getResponse()->getStatusCode());
     }
 
 
