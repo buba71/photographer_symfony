@@ -35,10 +35,10 @@ class AppFixtures extends Fixture
         $manager->persist($gallery);
 
         //Image fixtures
-        copy('public/build/images/imageTest.jpg', 'public/tmp/imageTest.jpg');
+        copy(__DIR__.'public/build/images/imageTest.jpg', __DIR__.'public/tmp/imageTest.jpg');
         $image = new Image();
 
-        $imageFile = new UploadedFile('public/tmp/imageTest.jpg', 'imageTest.jpg', 'image/jpg', null, true);
+        $imageFile = new UploadedFile(__DIR__.'public/tmp/imageTest.jpg', 'imageTest.jpg', 'image/jpg', null, true);
 
         $image->setGallery($gallery);
         $image->setImage('imageTest');
