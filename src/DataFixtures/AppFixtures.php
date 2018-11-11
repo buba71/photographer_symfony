@@ -35,10 +35,12 @@ class AppFixtures extends Fixture
         $manager->persist($gallery);
 
         //Image fixtures
-        copy(__DIR__.'public/build/images/imageTest.jpg', __DIR__.'public/tmp/imageTest.jpg');
+        // Avoid deleting original image by vichUploader
+        copy(__DIR__.'/../../public/build/images/imageTest.jpg', __DIR__.'/../../public/tmp/imageTest.jpg');
+
         $image = new Image();
 
-        $imageFile = new UploadedFile(__DIR__.'public/tmp/imageTest.jpg', 'imageTest.jpg', 'image/jpg', null, true);
+        $imageFile = new UploadedFile('public/tmp/imageTest.jpg', 'imageTest.jpg', 'image/jpg', null, true);
 
         $image->setGallery($gallery);
         $image->setImage('imageTest');

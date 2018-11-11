@@ -7,16 +7,16 @@ use Doctrine\ORM\EntityManagerInterface;
 
 class likeDislikeImage
 {
-    private $em;
+    private $entityManager;
 
-    public function __construct(EntityManagerInterface $em)
+    public function __construct(EntityManagerInterface $entityManager)
     {
-        $this->em = $em;
+        $this->entityManager = $entityManager;
     }
 
     public function likeOrDislike(int $userId, int $imageId)
     {
-        $currentImageLike = $this->em->getRepository(LikeImage::class)->findItem($userId, $imageId);
+        $currentImageLike = $this->entityManager->getRepository(LikeImage::class)->findItem($userId, $imageId);
 
 
         // if image not liked, like, persist user id and image liked  id into database
@@ -26,15 +26,15 @@ class likeDislikeImage
             $like->setImageId($imageId);
 
 
-            $this->em->persist($like);
-            $this->em->flush();
+            $this->entityManager->persist($like);
+            $this->entityManager->flush();
 
             $likeClassName = 'fa fa-heart fa-lg white-text heart';
 
         }else{
             // dislike and remove from database
-            $this->em->remove($currentImageLike[0]);
-            $this->em->flush();
+            $this->entityManager->remove($currentImageLike[0]);
+            $this->entityManager->flush();
 
             $likeClassName = 'fa fa-heart-o fa-lg white-text heart';
         }
