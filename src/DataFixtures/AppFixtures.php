@@ -36,8 +36,8 @@ class AppFixtures extends Fixture
 
         //Image fixtures
         // Avoid deleting original image by vichUploader
-        copy(__DIR__.'/../../public/build/images/imageTest.jpg', __DIR__.'/../../public/tmp/imageTest.jpg');
-
+        copy(__DIR__.'/../../public/tests/imageTest.jpg', __DIR__.'/../../public/tmp/imageTest.jpg');
+        
         $image = new Image();
 
         $imageFile = new UploadedFile('public/tmp/imageTest.jpg', 'imageTest.jpg', 'image/jpg', null, true);
