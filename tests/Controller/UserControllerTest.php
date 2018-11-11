@@ -16,8 +16,8 @@ class UserControllerTest extends WebTestCase
         $crawler = $client->request('GET', '/login');
         $form = $crawler->selectButton('Connexion')->form();
 
-        $form['_username'] = 'Lucie';
-        $form['_password'] = 'Yqpkaqrv1';
+        $form['_username'] = 'john';
+        $form['_password'] = 'john';
         $crawler = $client->submit($form);
 
         $client->followRedirect();

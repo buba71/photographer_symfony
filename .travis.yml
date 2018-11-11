@@ -19,7 +19,7 @@ install:
 
 
 script:
-
+    - php bin/phpunit
 
 # No tests
 
