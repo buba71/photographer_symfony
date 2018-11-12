@@ -10,6 +10,14 @@ use Twig\Environment;
 
 class DefaultController
 {
+    /**
+     * @param EntityManagerInterface $em
+     * @param Environment $twig
+     * @return Response
+     * @throws \Twig_Error_Loader
+     * @throws \Twig_Error_Runtime
+     * @throws \Twig_Error_Syntax
+     */
     public function index(EntityManagerInterface $em, Environment $twig)
     {
         $sliderImages = $em->getRepository(Gallery::class)->findAllWithImages();

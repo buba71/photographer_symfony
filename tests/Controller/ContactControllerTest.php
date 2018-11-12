@@ -6,6 +6,10 @@ use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
 class ContactControllerTest extends WebTestCase
 {
+    /**
+     * @ Test send mail from user
+     * @ return void
+     */
     public function testSendMail():void
     {
         $client = static :: createClient();

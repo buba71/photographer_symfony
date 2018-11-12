@@ -14,6 +14,10 @@ class GalleryControllerTest extends WebTestCase
 
     }
 
+    /**
+     * $ Get the galleryController index response
+     * @ return void
+     */
     public function testIndex():void
     {
         $this->client->request('GET', '/gallery');

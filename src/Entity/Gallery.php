@@ -70,6 +70,10 @@ class Gallery
         return $this->images;
     }
 
+    /**
+     * @param Image $image
+     * @return Gallery
+     */
     public function addImage(Image $image): self
     {
         if (!$this->images->contains($image)) {
@@ -80,6 +84,10 @@ class Gallery
         return $this;
     }
 
+    /**
+     * @param Image $image
+     * @return Gallery
+     */
     public function removeImage(Image $image): self
     {
         if ($this->images->contains($image)) {

@@ -24,6 +24,11 @@ class ThumbnailExtension extends AbstractExtension
         );
     }
 
+    /**
+     * @ create thumbNail Image and return thumbNail path
+     * @param $image
+     * @return string
+     */
     public function thumbnailFilter($image)
     {
         // Retrieve the original image path

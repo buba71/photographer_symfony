@@ -24,7 +24,7 @@ class emailerContact
 
     /**
      * @param array $contactInfo
-     * @ service witch send an email to admin from any user
+     * @ service that send an email to admin from any user
      */
     public function contactEmail(array $contactInfo):void
     {

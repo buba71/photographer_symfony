@@ -6,11 +6,20 @@ use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
 class AdminControllerTest extends WebTestCase
 {
+    /**
+     * @var
+     */
     private $entitymanager;
 
+    /**
+     * @var
+     */
     private $usermanager;
 
-    public function setUp()
+    /**
+     * @ Setting-up kernel, entityManager
+     */
+    public function setUp():void
     {
         $kernel = static::createKernel();
         $kernel->boot();
@@ -19,6 +28,10 @@ class AdminControllerTest extends WebTestCase
 
     }
 
+    /**
+     * @ Create a new user from fosUer bundle
+     * @ return void
+     */
     public function testCreateNewUserEntity():void
     {
        $user = $this->usermanager->createUser();
