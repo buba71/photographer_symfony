@@ -23,7 +23,7 @@
 
             <!--form -->
 
-            <form class="text-center" style="color:#757575" action="{{ path("fos_user_security_check") }}" method="post">
+            <form class="form-user text-center" style="color:#757575" action="{{ path("fos_user_security_check") }}" method="post">
                 {% if csrf_token %}
                     <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
                 {% endif %}
@@ -38,21 +38,6 @@
                 <div class="md-form">
                     <label for="password">{{ 'security.login.password'|trans }}</label>
                     <input type="password" class="form-control"id="password" name="_password" required="required" autocomplete="current-password" />
-                </div>
-
-                <div>
-                    <div>
-                        <!--Remenber me -->
-                        <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input" id="remember_me" name="_remember_me" value="on" />
-                            <label class="custom-control-label" for="remember_me">{{ 'security.login.remember_me'|trans }}</label>
-                        </div>
-                    </div>
-                    <div>
-                        <!-- Forgot password -->
-                        <a href="#">Mot de passe oublié</a>
-
-                    </div>
                 </div>
 
                 <!-- Sign button -->
