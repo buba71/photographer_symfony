@@ -8,12 +8,20 @@ Galerie photos: Galerie photos
 Modifier cet album: Modifier cet album
 Nom de l'album: Nom de l'album
 Ajouter des photos: Ajouter des photos
+Nom d'utilisateur: Nom d'utilisateur
+Compte activé: Compte activé
+Dernière connexion: Dernière connexion
+Autorisation: Autorisation
 Albums: Albums
 Image: Image
 Photos: Photos
 User: Utilisateur
 <strong>Vos photos</strong>: <strong>Vos photos</strong>
 <strong>Vos albums</strong>: <strong>Vos albums</strong>
+<strong>Utilisateurs</strong>: <dtrong>Utilisateurs</strong>
+Prénom: Prénom
+Adresse mail: Adresse mail
+Votre message: Votre message
 
 # entity properties
 Date d'ajout: Date d'ajout

@@ -14,9 +14,14 @@ easy_admin:
                     - { property: 'roles' , label: 'Autorisations', type: 'choice', type_options: { multiple: true, choices: {'ROLE_USER':'ROLE_USER', 'ROLE_ADMIN':'ROLE_ADMIN'} } }
 
             list:
+                title: '<strong>Utilisateurs</strong>'
                 fields:
                     - { property: 'username', label: "Nom d'utilisateur" }
                     - { property: 'email', label: 'Adresse mail'}
                     - { property: 'enabled', label: 'Compte activé' }
                     - { property: 'lastLogin', label: 'Dernière connexion'}
                     - { property: 'roles', label: 'Autorisation'}
+
+                actions:
+                    - { name: 'edit', icon: 'edit', label: '', title: 'Modifier' }
+                    - { name: 'delete', icon: 'trash', label: '', title: 'Supprimer'}
