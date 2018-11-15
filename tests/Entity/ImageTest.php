@@ -8,6 +8,9 @@ use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
 class ImageTest extends WebTestCase
 {
+    /**
+     * test Image entity setters and getters
+     */
     public function testImage()
     {
         $gallery = new Gallery();

@@ -17,6 +17,10 @@ class ThumbnailExtensionTest extends TestCase
 
     }
 
+    /**
+     * @ Test thumb path filter
+     * @ return void
+     */
     public function testThumbnailFilter():void
     {
         $image = new Image();

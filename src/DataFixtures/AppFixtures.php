@@ -26,6 +26,10 @@ class AppFixtures extends Fixture
     }
 
 
+    /**
+     * @param ObjectManager $manager
+     * @ Data fixtures
+     */
     public function load(ObjectManager $manager):void
     {
         // gallery fixtures

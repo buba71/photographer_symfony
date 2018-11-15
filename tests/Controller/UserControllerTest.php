@@ -7,7 +7,9 @@ use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 class UserControllerTest extends WebTestCase
 {
     /**
-     * In this test, user have not liked some images.
+     * @ In this test, user have not  some images.
+     * @ Get the userAccount Controller response
+     * @ return void
      */
     public function testIndex():void
     {

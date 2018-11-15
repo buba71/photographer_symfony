@@ -21,8 +21,12 @@ class likeDislikeImageTest extends TestCase
         $this->likeImageRepository = static::createMock('App\Repository\LikeImageRepository');
     }
 
-
-    public function testImageAllReadyLiked():void
+    /**
+     * @ param entityManager Mock
+     * @ param likeImageRepository Mock
+     *
+     */
+    public function testIfImageAllReadyLiked():void
     {
         $userId = 1;
         $imageId = 5;
@@ -49,7 +53,13 @@ class likeDislikeImageTest extends TestCase
         static::assertContains('fa fa-heart-o fa-lg white-text heart', $result);
     }
 
-    public function testImageNotLiked():void
+    /**
+     * @ param
+     * @ param
+     * @ vars $userId, $imageId
+     * @ return void
+     */
+    public function testIfImageNotLiked():void
     {
         $userId = 1;
         $imageId = 5;
