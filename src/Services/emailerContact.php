@@ -31,7 +31,7 @@ class emailerContact
         list('name'=>$name, 'firstName'=>$firstName, 'email'=>$mail, 'message'=>$message) = $contactInfo;
 
         $newMessage = (new \Swift_Message('Nouveau Contact'))
-            ->setFrom('d.delima@david-de-lima.tech', 'De Lima David')
+            ->setFrom('davdelima71@gmail.com', 'De Lima David')
             ->setTo('d.delima@outlook.fr')
             ->setSubject('Nouveau contact')
 
