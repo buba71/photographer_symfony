@@ -1,0 +1,27 @@
+easy_admin:
+    entities:
+        Article:
+            class: App\Entity\Article
+            label: 'Articles'
+
+            list:
+                title: 'Mes articles'
+                help: 'Gérez simplement vos articles.'
+
+                fields:
+                    - { property: 'createdAt', label: "Date d'ajout"}
+                    - { property: 'title', label: 'Titre' }
+                    - { property: 'content', label: 'Contenu de votre article' }
+                    - { property: 'tags', label: 'Tags associés', template: 'tag_collection.html.twig', label_colors: ['primary', 'success', 'info'] }
+
+                actions:
+                    - { name: 'show', icon: 'search', label: '', title: 'Détails' }
+                    - { name: 'edit', icon: 'edit', label: '', title: 'Modifier' }
+                    - { name: 'delete', icon: 'trash', label: '', title: 'Supprimer' }
+
+            form:
+                title: 'Modifier cet article'
+                fields:
+                    - { property: 'title', type: 'text', label: "Titre de l'article" }
+                    - { property: 'tags', type: 'App\Form\TagsType', label: 'Liste de tags', type_options: { by_reference: false } }
+                    - { property: 'content', type: 'textarea', label: "Le contenu de votre article" }

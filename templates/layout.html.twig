@@ -6,7 +6,7 @@
         <meta http-equiv="x-ua-compatible" content="ie-edge">
         <title>{% block title %}{% endblock title%}</title>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-        <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300|Lora|Cinzel+Decorative:700">
+        <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,300i,700|Lora|Cinzel+Decorative:700|">
         <!-- mdb-bootstrap core CSS -->
         <link href="{{ asset('build/css/bootstrap.css') }}" rel="stylesheet">
     {% block stylesheets %}
@@ -26,13 +26,13 @@
                 <a href="{{ path('gallery_index') }}">PHOTOTHEQUE</a>
             </li>
             <li>
-                <a href="#">MON BLOG</a>
+                <a href="{{ path('blog_index') }}">MON BLOG</a>
             </li>
             <li>
                 <a href="{{ path('contact') }}">CONTACT</a>
             </li>
             <li>
-                <a href="#">A PROPOS</a>
+                <a href="{{ path('about') }}">A PROPOS</a>
             </li>
         </ul>
 
@@ -98,7 +98,7 @@
             </li>
             <li class="vertical-line">|</li>
             <li>
-                <a href="#" class="nav-link">Blog</a>
+                <a href="{{ path('blog_index') }}" class="nav-link">Blog</a>
             </li>
             <li class="vertical-line">|</li>
             <li>
@@ -106,7 +106,7 @@
             </li>
             <li class="vertical-line">|</li>
             <li>
-                <a href="#" class="nav-link">A Propos</a>
+                <a href="{{ path('about') }}" class="nav-link">A Propos</a>
             </li>
         </ul>
         <!-- copyright, terms, privacy -->

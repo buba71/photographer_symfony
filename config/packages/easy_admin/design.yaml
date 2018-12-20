@@ -6,3 +6,4 @@ easy_admin:
         form_theme: 'vertical'
     formats:
         datetime: 'd/m/Y'
+        date:     'd/m/Y'

@@ -1,0 +1,62 @@
+{% extends 'layout.html.twig' %}
+{% block content %}
+
+    <div id="page-content-wrapper">
+
+        <!-- this section display all the tags available in blog -->
+        <div class="tags card ">
+            <div class="card-body">
+                <div class="card-title">Rechercher un article par tag...</div>
+            {% for tag in tags %}
+                <span class="badge badge-pill">
+                    <a href="{{ path('blog_index', {'tag': (tag.name)}) }}" >{{ tag.name }}</a>
+                </span>
+            {% endfor %}
+            </div>
+        </div>
+        <!-- this section display all the tags available in blog -->
+
+        <!-- list overview  of posts with their tags -->
+        {% for post in postsList %}
+            <div class="card blog elegant-color-dark">
+                <div class="card-body">
+                    <h4><strong>{{ post.title|upper }}</strong>
+                        <i class="fa fa-clock-o fa-lg" style="color: grey;font-size: 12px"> {{ post.createdAt|date('d/m/Y') }}</i>
+                    </h4>
+
+                    <div class="post-content">
+                        {{ post.content|easyadmin_truncate(80)|raw}}
+                    </div>
+                    <!-- tags -->
+                    {% for tag in post.tags %}
+
+                        <span class="badge badge-pill">
+                            <a href="{{ path('blog_index', {'tag': (tag.name)}) }}" >{{ tag.name }}</a>
+                        </span>
+
+                    {% endfor %}
+
+                    <div>
+                        <a href="{{ path('show_post', { 'id': (post.id) }) }}">
+                            <button type="button" class="btn btn-outline btn-sm waves-effect _submit align-left">Lire la suite</button>
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+
+        {% else %}
+            <div class="card elegant-color-dark">
+            <p>Il n'y a aucun article à afficher pour le moment.</p>
+            </div>
+
+        {% endfor %}
+
+        <!-- Paginator Bundle  -->
+        <div class="pagination">
+            {{ knp_pagination_render(postsList) }}
+        </div>
+
+    </div>
+
+{% endblock content %}

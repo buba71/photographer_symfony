@@ -27,6 +27,7 @@ class RedirectAfterEditProfileSubscriber implements EventSubscriberInterface
         $url = $this->routeur->generate('user_account');
         $response = new RedirectResponse($url);
         $event->setResponse($response);
+
     }
 
     public static function getSubscribedEvents()

@@ -1,0 +1,13 @@
+<div class="form">
+    {{ form_start(form) }}
+
+    <div class="md-form">
+        {{ form_widget(form.content, { 'attr': {'class': 'md-textarea form-control', 'rows': '1' } }) }}
+        {{ form_label(form.content, 'Ecrivez ici votre commentaire') }}
+        {{ form_errors(form.content) }}
+
+        <button type="submit" class="btn btn-outline btn-md _submit">commenter</button>
+
+    </div>
+    {{ form_end(form) }}
+</div>

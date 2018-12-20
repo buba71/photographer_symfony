@@ -2,8 +2,10 @@
 
 namespace App\DataFixtures;
 
+use App\Entity\Article;
 use App\Entity\Gallery;
 use App\Entity\Image;
+use App\Entity\Tag;
 use App\Entity\User;
 
 use Doctrine\Bundle\FixturesBundle\Fixture;
@@ -68,6 +70,19 @@ class AppFixtures extends Fixture
 
         $this->fosUserManager->updateUser($user);
 
+
+
+
+        //Posts fixtures
+        $tag_1 = new Tag();
+        $tag_1->setName('photo');
+
+        $post_1 = new Article();
+        $post_1->setTitle('Un premier article.');
+        $post_1->setContent('Voici un premier article');
+        $post_1->addTag($tag_1);
+
+        $manager->persist($post_1);
 
         $manager->flush();
     }

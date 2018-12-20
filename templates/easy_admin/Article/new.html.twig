@@ -1,0 +1,9 @@
+{% extends '@EasyAdmin/default/new.html.twig' %}
+
+
+{% block body_javascript %}
+    <script src="{{ asset('build/ckeditor/ckeditor.js') }}"></script>
+    <script type="text/javascript">
+        CKEDITOR.replace('article_content');
+    </script>
+{% endblock  %}

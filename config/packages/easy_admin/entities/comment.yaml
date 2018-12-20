@@ -1,0 +1,19 @@
+easy_admin:
+    entities:
+        Comment:
+            class: App\Entity\Comment
+            label: 'Commentaires'
+            disabled_actions: ['edit']
+
+            list:
+                title: 'Modération des commentaires'
+                help: 'Dans cette section, supprimez les commentaire indésirable.'
+
+                fields:
+                    - { property: 'createdAt', label: 'Posté le' }
+                    - { property: 'user', label: 'auteur' }
+                    - { property: 'content' , label: 'contenu'}
+
+                actions:
+                    - { name: 'show', icon: 'search', label: '', title: 'Détails' }
+                    - { name: 'delete', icon: 'trash', label: '', title: 'Supprimer' }

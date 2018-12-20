@@ -19,9 +19,25 @@ user_account:
     path: /account
     controller: App\Controller\UserController::index
 
+# *** blog routes ***
+blog_index:
+    path: /blog
+    controller: App\Controller\BlogController::index
+
+show_post:
+    path: /blog/{id}
+    controller: App\Controller\BlogController::showPost
+
+# *** contact form routes ***
 contact:
     path: /contact
     controller: App\Controller\ContactController::index
+
+# *** About route controller *** #
+
+about:
+    path: /about
+    controller: App\Controller\AboutController::index
 
 # *** security routes ****
 fos_user:

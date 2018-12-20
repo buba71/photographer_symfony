@@ -11,13 +11,19 @@
             "ref": "fc52d86631a6dfd9fdf3381d0b7e3df2069e51b3"
         }
     },
+    "knplabs/knp-components": {
+        "version": "v1.3.10"
+    },
+    "knplabs/knp-paginator-bundle": {
+        "version": "v2.8.0"
+    },
     "symfony/phpunit-bridge": {
         "version": "4.1",
         "recipe": {
             "repo": "github.com/symfony/recipes",
             "branch": "master",
             "version": "4.1",
-            "ref": "b14c7f62fabeedf256d3211b0f704402b5530ba1"
+            "ref": "0e548dd90adba18fabd4ef419b14d361fe4d6c74"
         }
     }
 }

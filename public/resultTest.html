@@ -1,0 +1,266 @@
+#!/usr/bin/env php
+PHPUnit 6.5.13 by Sebastian Bergmann and contributors.
+
+Testing Project Test Suite
+[33;1mR[0m                                                                   1 / 1 (100%)<!DOCTYPE html>
+<html lang="fr" class="">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta http-equiv="x-ua-compatible" content="ie-edge">
+        <title>Mon compte</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,300i,700|Lora|Cinzel+Decorative:700|">
+        <!-- mdb-bootstrap core CSS -->
+        <link href="/build/css/bootstrap.css" rel="stylesheet">
+            <link rel="stylesheet" href=/build/css/gallery.css>
+        </head>
+
+    <body>
+
+    
+    <div id="wrapper">
+    <!-- Sidebar -->
+    <div id="sidebar-wrapper">
+        <ul class="sidebar-nav align-bottom" style="margin-top: 100px">
+            <li>
+                <a href="/gallery">PHOTOTHEQUE</a>
+            </li>
+            <li>
+                <a href="/blog">MON BLOG</a>
+            </li>
+            <li>
+                <a href="/contact">CONTACT</a>
+            </li>
+            <li>
+                <a href="/about">A PROPOS</a>
+            </li>
+        </ul>
+
+    </div>
+    <!-- /#sidebar-wrapper -->
+
+    <!-- Hamburger menu -->
+    <nav class="navbar navbar-light navbar-2 elegant-color-dark">
+        <div class="brand">
+            <a class="" href="/"><img src="/build/images/brand.png" alt="" style="max-width: 170px; margin-bottom:10px "></a>
+        </div>
+
+        <div class="navbar-links">
+            <div class=" d-inline-block" id="user-login">
+                
+                    <div class=" dropdown" >
+                        <a class="nav-link dropdown-toggle white-text" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
+                           aria-expanded="false"><span class="fa fa-user fa-lg white-text"></span>
+                        </a>
+                        <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item" href="/account">Mon compte</a>
+                            <a class="dropdown-item" href="/logout">Se déconnecter</a>
+                        </div>
+                    </div>
+
+                            </div>
+            <!-- Hamburger button -->
+            <button class="navbar-toggler d-inline" id="menu-toggle" type="button" data-toggle="" aria-controls="navbarSupportedContent15"
+                    aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span>
+            </button>
+            <!-- Hamburger button -->
+        </div>
+    </nav>
+    <!-- Navigation -->
+    
+    
+    <div class="card elegant-color-dark" id="page-content">
+        <div class="card-body">
+            <h4 class="card-title">Vos informations personnelles</h4>
+
+        <div class="row">
+            <div class="col-lg-12" id="user-info">
+
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Nom</th>
+                            <th scope="col">Adresse mail</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="align-middle">John</td>
+                            <td class="align-middle">jhon@gmail.com</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="ml-1 mb-4"><a href="/profile/edit">
+                        <button type="button" class="btn btn-dark btn-sm align-left">Modifier</button>
+                    </a>
+                </div>
+
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12" id="bookmarks-info">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>Photos que vous avez aimé</th>
+                    <th>Date</th>
+                </tr>
+                </thead>
+                        <div class="flash-notice grey-text">
+                Vous n&#039;avez pas encore aimé de photo.
+            </div>
+            
+                
+            </table>
+
+
+            </div>
+        </div>
+        </div>
+    </div>
+
+
+    </div>
+
+    
+    <!-- Footer -->
+    <footer id="footer" class="elegant-color-dark white-text">
+        <!-- links nav -->
+        <ul class="text-center">
+            <li>
+                <a href="/gallery" class="nav-link">Photothèque</a>
+            </li>
+            <li class="vertical-line">|</li>
+            <li>
+                <a href="/blog" class="nav-link">Blog</a>
+            </li>
+            <li class="vertical-line">|</li>
+            <li>
+                <a href="/contact" class="nav-link">Contact</a>
+            </li>
+            <li class="vertical-line">|</li>
+            <li>
+                <a href="/about" class="nav-link">A Propos</a>
+            </li>
+        </ul>
+        <!-- copyright, terms, privacy -->
+        <div id="copyright" class="flex-center">
+            <a href="#"><span>Politique de confidentialité | </span></a>
+            <a href="#"><span> Mentions légales</span></a><br/>
+            <span><span style="color: gainsboro">&copy 2018 Copyright:</span> Aurélie Gronfier</span>
+        </div>
+    </footer>
+    <!-- Footer -->
+
+    
+        <!-- /Start your project here-->
+
+    <!-- SCRIPTS -->
+    <!-- JQuery -->
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <!-- Bootstrap core JavaScript -->
+    <!--<script type="text/javascript" src="js/bootstrap.min.js"></script>-->
+    <!-- MDB core JavaScript -->
+    <script type="text/javascript" src="/build/js/mdb.min.js"></script>
+    <script type="text/javascript" src="/build/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+        /** sidebar control **/
+        $(document).ready(function () {
+            /** sideBar control */
+            $("#menu-toggle").click(function (event) {
+                event.preventDefault();
+                $("#wrapper").toggleClass("toggled");
+            });
+        });
+
+
+
+        /*               - MANAGER AJAX  FUNCTION -             */
+        function get (url, data, success, error){
+            var xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4) {
+                    if (xhr.status === 200) {
+                        success(xhr.responseText)
+                    } else {
+                        error(xhr);
+                    }
+                }
+            };
+            xhr.open('POST',url);
+            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+            xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
+
+            xhr.send(data);
+        }
+
+        /* if like/dislike image */
+
+        var $select = document.getElementsByClassName('heart');
+
+        for (i=0; i<$select.length; i++){
+            $select[i].addEventListener('click', function(event) {
+                event.preventDefault();
+
+                // retrieve current user_id and liked image_id
+                var $image = this.dataset.image;
+                var $user = this.dataset.user;
+
+                // Send data to galleryController with post method in AJAX (get() function)
+                get('/like',
+                    'userId=' + $user + '&imageId=' + $image,
+                    function(response){
+
+                        // Set className of heart button
+                        event.target.className = response;
+                    },
+                    function (error){
+                        console.log(error);
+                    });
+
+            });
+
+        }
+
+        new WOW().init();
+
+    </script>
+    </body>
+</html>
+
+
+Time: 7.24 seconds, Memory: 28.00MB
+
+There was 1 risky test:
+
+1) tests\Controller\UserControllerTest::testIndex
+This test did not perform any assertions
+
+[30;43mOK, but incomplete, skipped, or risky tests![0m
+[30;43mTests: 1[0m[30;43m, Assertions: 0[0m[30;43m, Risky: 1[0m[30;43m.[0m
+
+[41;37mRemaining deprecation notices (7)[0m
+
+  2x: Checking for the AdvancedUserInterface in "Symfony\Component\Security\Core\Authentication\Token\AbstractToken::hasUserChanged()" is deprecated since Symfony 4.1 and support for it will be removed in 5.0. Implement the Symfony\Component\Security\Core\User\EquatableInterface to check if the user has been changed,
+    2x in UserControllerTest::testIndex from tests\Controller
+
+  1x: Referencing controllers with a single colon is deprecated since Symfony 4.1. Use fos_user.security.controller::loginAction instead.
+    1x in UserControllerTest::testIndex from tests\Controller
+
+  1x: The "FOS\UserBundle\Model\UserInterface" interface extends "Symfony\Component\Security\Core\User\AdvancedUserInterface" that is deprecated since Symfony 4.1
+ *.
+    1x in UserControllerTest::testIndex from tests\Controller
+
+  1x: Calling "Symfony\Component\Security\Core\User\UserChecker::checkPreAuth()" with an AdvancedUserInterface is deprecated since Symfony 4.1. Create a custom user checker if you wish to keep this functionality.
+    1x in UserControllerTest::testIndex from tests\Controller
+
+  1x: Calling "Symfony\Component\Security\Core\User\UserChecker::checkPostAuth()" with an AdvancedUserInterface is deprecated since Symfony 4.1. Create a custom user checker if you wish to keep this functionality.
+    1x in UserControllerTest::testIndex from tests\Controller
+
+  1x: Doctrine\Common\ClassLoader is deprecated.
+    1x in UserControllerTest::testIndex from tests\Controller
+

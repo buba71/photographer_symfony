@@ -33,7 +33,6 @@ class ContactController
             $session->getFlashBag()->add('notice', 'Votre message a été envoyé avec succès!');
 
             $url = $router->generate('contact');
-
             return new RedirectResponse($url);
         }
 

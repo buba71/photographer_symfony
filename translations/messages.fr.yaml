@@ -22,6 +22,11 @@ User: Utilisateur
 Prénom: Prénom
 Adresse mail: Adresse mail
 Votre message: Votre message
+Article: Article
+Comment: un commentaire
+Commentaires: Commentaires
+Modération des commentaires: Modération des commentaires
+
 
 # entity properties
 Date d'ajout: Date d'ajout
@@ -33,12 +38,29 @@ Détails: Détails
 Modifier: Modifier
 Supprimer: Supprimer
 Lieu de prise de vue: Lieu de prise de vue
+Posté le : Posté le
+auteur: auteur
+contenu: contenu
+détails: détails
+Articles: Articles
+Mes articles: Mes articles
+Titre: Titre
+Contenu de votre article: Contenu de votre article
+Tags associés: Tags associés
+
 
 # actions
 
 
 # messages
 Gérez simplement vos albums photos.: Gérez simplement vos albums photos.
+Gérez simplement vos articles.: Gérez simplement vos articles.
+Dans cette section, supprimez les commentaire indésirable.: Dans cette section, supprimez les commentaire indésirable.
 
 #Pluriel du nombre de photos contenue dans chaque galerie
 nbImages: "[0,1] %count% photo|[2,Inf] %count% photos"
+
+#knp paginator labels
+
+label_previous: Précédent
+label_next:     Suivant

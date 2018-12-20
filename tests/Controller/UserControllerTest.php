@@ -18,15 +18,14 @@ class UserControllerTest extends WebTestCase
         $crawler = $client->request('GET', '/login');
         $form = $crawler->selectButton('Connexion')->form();
 
-        $form['_username'] = 'john';
+        $form['_username'] = 'John';
         $form['_password'] = 'john';
-        $crawler = $client->submit($form);
+        $client->submit($form);
 
-        $client->followRedirect();
+        $crawler = $client->followRedirect();
 
         $crawler = $client->request('GET', '/account');
 
-
-        $this->assertEquals(200, $client->getResponse()->getStatusCode());
+        static::assertEquals(200, $client->getResponse()->getStatusCode());
     }
 }

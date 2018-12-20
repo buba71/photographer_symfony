@@ -1,0 +1,55 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+    <div id="page-content-wrapper">
+        <div class="card post elegant-color-dark">
+            <div class="card-body">
+            <!-- Post Content -->
+                <h2><strong>{{ post.title|upper }}</strong>
+                    <i class="fa fa-clock-o fa-lg" style="color: grey;font-size: 12px"> {{ post.createdAt|date('d/m/Y') }}</i>
+                </h2>
+                <div class="post-content">
+                    {{ post.content|raw }}
+
+                    <!-- Comments section -->
+                    <div class="comments">
+
+                        <!-- section line separator  -->
+                        <div class="section" style="border: 1px solid grey;"></div>
+
+                        <h4>Commentaires ({{ comments|length }})</h4>
+                            {% for message in app.flashes('notice') %}
+                                <div class="alert alert-primary">
+                                    {{ message }}
+                                </div>
+                            {% endfor %}
+
+                        {% for comment in  comments %}
+
+                            <div class="comment">
+                                <em>{{ comment.user }}, le {{ comment.createdAt|date('d M Y') }}</em> :
+                                <p>{{ comment.content }}</p>
+                            </div>
+
+                        {% endfor %}
+
+                        <!-- if user is authenticated, user can comment this post -->
+                        {%  if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+
+                            Ajouter un commentaire:
+
+                            {% include('blog/commentForm.html.twig') %}
+
+                        {% else %}
+
+                            <p><em>Vous devez être connecté afin de commenter un l'article.</em></p>
+
+                        {% endif %}
+                    </div>
+                    <!-- Comments section -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
